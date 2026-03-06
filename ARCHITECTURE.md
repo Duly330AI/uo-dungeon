@@ -136,9 +136,9 @@ Outcome Events (Hit, Miss, Crit, Block, Damage, ApplyEffect, Death, Drop, Log)
 **API:**
 
 ```python
-rng = RngStream(seed=1337, algo="pcg32")
-state = rng.export_state()
-rng2 = RngStream.import_state(state)
+const rng = new RngStream({ seed: 1337, algo: "pcg32" });
+const state = rng.exportState();
+const rng2 = RngStream.importState(state);
 ```
 
 * **Systems** akzeptieren `rng` als Parameter (kein globales `random`).
@@ -202,10 +202,10 @@ Enemies referenzieren `monsters.json`-Archetypen + laufzeitliche Felder (HP, Eff
 
 ## 10) Karten-Pipeline (BSP → TileMap → Layers)
 
-1. **BSP-Generator (`util/bsp.py`)** erzeugt **Grid** (`WALL|FLOOR`).
-2. **Adapter (`util/tilemap.py`)** wandelt Grid zu **Layer-Daten** (`ground`, `walls`, `decals`, `light-blockers`).
+1. **BSP-Generator (`util/bsp.ts`)** erzeugt **Grid** (`WALL|FLOOR`).
+2. **Adapter (`util/tilemap.ts`)** wandelt Grid zu **Layer-Daten** (`ground`, `walls`, `decals`, `light-blockers`).
 3. **Renderer** zeichnet die Tiles auf das Canvas.
-4. **Kollision (`systems/collision.py`)** arbeitet direkt auf dem **Grid** (Nachbarzellen).
+4. **Kollision (`systems/collision.ts`)** arbeitet direkt auf dem **Grid** (Nachbarzellen).
 
 **Performance:** Culling per **Viewport + Margin**; SpriteLists pro Layer.
 
@@ -265,11 +265,11 @@ Enemies referenzieren `monsters.json`-Archetypen + laufzeitliche Felder (HP, Eff
 
 Adapter bieten **stabile, testfreundliche** Oberflächen:
 
-* `util/feedback.py` → `emit_hit_particles`, `screen_shake(intensity, ms)`
-* `util/drops_adapter.py` → `spawn_drop`, `pickup_drop`
-* `util/nodes_adapter.py` → `spawn_node`, `despawn_node`
-* `util/audio_adapter.py` → `play_sfx(name)`
-* `scenes/ui_*` → Hotbar/Combat/Crafting Overlays
+* `util/feedback.ts` → `emit_hit_particles`, `screen_shake(intensity, ms)`
+* `util/drops_adapter.ts` → `spawn_drop`, `pickup_drop`
+* `util/nodes_adapter.ts` → `spawn_node`, `despawn_node`
+* `util/audio_adapter.ts` → `play_sfx(name)`
+* `components/ui_*` → Hotbar/Combat/Crafting Overlays
 
 In Tests liefern Adapter **No-Ops**; in `components/*` werden sie mit Browser-Implementierungen gebunden.
 
@@ -295,7 +295,7 @@ In Tests liefern Adapter **No-Ops**; in `components/*` werden sie mit Browser-Im
 * **2 000 Node-Ticks**: < **1 ms** Logik (CI, M4)
 * **Save+Write**: < **50 ms** (M5)
 
-**Hilfen:** `util/prof.py` (Kontextmanager/Decorator), Debug-Overlay (F3) mit rollierenden Mittelwerten.
+**Hilfen:** `util/prof.ts` (Kontextmanager/Decorator), Debug-Overlay (F3) mit rollierenden Mittelwerten.
 
 ---
 
@@ -310,7 +310,7 @@ In Tests liefern Adapter **No-Ops**; in `components/*` werden sie mit Browser-Im
 ## 20) Öffentliche APIs (Signaturen, exemplarisch)
 
 ```python
-# systems/combat.py
+# systems/combat.ts
 def resolve_turn(state: CombatState, intents: list[Intent], rng: RngStream) -> list[Outcome]: ...
 
 # systems/initiative.py
