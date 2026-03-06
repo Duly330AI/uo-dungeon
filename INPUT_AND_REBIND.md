@@ -501,4 +501,4 @@ class InputManager {
 
 ---
 
-**Questions?** Check `docs/ARCHITECTURE.md` for input system class diagram.
+**Questions?** Check `ARCHITECTURE.md` for input system class diagram.

@@ -54,7 +54,7 @@ tests/
 ## 3) Schichten & Abhängigkeitsregeln
 
 ```
-scenes ─┬──► adapters (feedback/audio/ui/nodes/drops/tiles)
+components ─┬──► adapters (feedback/audio/ui/nodes/drops/tiles)
         │
         └──► systems (combat, skills, loot, ...)
                     ▲
@@ -66,9 +66,9 @@ entities ◄──────────┘  (Datenmodelle)
 **Regeln:**
 
 * `systems/*` **importieren niemals** React/DOM/Canvas.
-* `scenes/*` **dürfen** `systems/*`, `entities/*`, `util/*` importieren.
+* `components/*` **dürfen** `systems/*`, `entities/*`, `util/*` importieren.
 * Datenzugriff ausschließlich über `data_loader/validation`.
-* Adapter-APIs (z. B. `util/feedback.py`) sind **No-Ops** in Tests und werden in `scenes/*` gebunden.
+* Adapter-APIs (z. B. `util/feedback.ts`) sind **No-Ops** in Tests und werden in `components/*` gebunden.
 
 ---
 
@@ -151,18 +151,18 @@ rng2 = RngStream.import_state(state)
 
 | Modul                   | Zweck                                  | Importiert                                            |
 | ----------------------- | -------------------------------------- | ----------------------------------------------------- |
-| `systems/combat.py`     | Intents→Outcomes, Rundenablauf         | stats, effects, los, damage, ammo, skills hooks |
-| `systems/initiative.py` | Reihenfolge (DEX, Ties, Rundenwechsel) | rng                                                   |
-| `systems/stats.py`      | ATK/DEF/CRIT/EVA/RES Formeln           | data                                                  |
-| `systems/effects.py`    | Buff/Debuff/DoT/CC Ticks/Stacks        | data                                                  |
-| `systems/loot.py`       | Gewichtet/Nested Tabellen              | data, rng                                             |
-| `systems/items.py`      | Itemmodelle, Mods, Damage/Defense      | data                                                  |
-| `systems/inventory.py`  | Slots, Stacks, Transaktionen           | items                                                 |
-| `systems/equipment.py`  | Equip/Unequip, Stataggregation         | items                                                 |
-| `systems/item_use.py`   | Consumables → Effects                  | effects                                               |
-| `systems/skills.py`     | XP-Kurven, Hooks, Boni                 | data                                                  |
-| `systems/crafting.py`   | Queue/Jobs/Erfolg/Fail/Crit            | data, inventory, rng                                  |
-| `systems/nodes.py`      | Node-State (Depletion/Respawn/Yield)   | data, rng                                             |
+| `systems/combat.ts`     | Intents→Outcomes, Turn sequence         | stats, effects, los, damage, ammo, skills hooks |
+| `systems/initiative.ts` | Order (DEX, Ties, Turn change) | rng                                                   |
+| `systems/stats.ts`      | ATK/DEF/CRIT/EVA/RES Formulas           | data                                                  |
+| `systems/effects.ts`    | Buff/Debuff/DoT/CC Ticks/Stacks        | data                                                  |
+| `systems/loot.ts`       | Weighted/Nested Tables              | data, rng                                             |
+| `systems/items.ts`      | Item models, Mods, Damage/Defense      | data                                                  |
+| `systems/inventory.ts`  | Slots, Stacks, Transactions           | items                                                 |
+| `systems/equipment.ts`  | Equip/Unequip, Stat aggregation         | items                                                 |
+| `systems/item_use.ts`   | Consumables → Effects                  | effects                                               |
+| `systems/skills.ts`     | XP-Curves, Hooks, Bonuses                 | data                                                  |
+| `systems/crafting.ts`   | Queue/Jobs/Success/Fail/Crit            | data, inventory, rng                                  |
+| `systems/nodes.ts`      | Node-State (Depletion/Respawn/Yield)   | data, rng                                             |
 | `systems/save_*`        | Save-Contract/Schema/Service/Migration | data                                                  |
 | `util/*`                | BSP, LOS, Pfad, Kamera, RNG, Profiler  | —                                                     |
 | `components/*`          | React, Canvas, Adapter-Bindings        | systems                                               |
@@ -171,7 +171,7 @@ rng2 = RngStream.import_state(state)
 
 ## 9) Entities (Datenmodelle)
 
-**Dataclasses**/TypeScript-Interfaces (keine DOM-Abhängigkeit):
+**TypeScript Interfaces** (no DOM dependency):
 
 ```python
 @dataclass
