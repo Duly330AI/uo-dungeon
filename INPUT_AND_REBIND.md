@@ -448,41 +448,43 @@ These keys cannot be rebound (hardcoded system functions):
 ## 📁 **Related Files**
 
 - **Config:** `config/controls.json` - User keybindings
-- **Code:** `game/input/input_manager.py` - Input handling
-- **Code:** `game/input/context_manager.py` - Context switching
-- **Code:** `game/ui/rebind_screen.py` - Rebinding UI
-- **Docs:** `docs/DEVELOPMENT.md` - Input system architecture
+- **Docs:** `DEVELOPMENT.md` - Input system architecture
 
 ---
 
 ## 🔧 **Implementation Notes**
 
-### **Arcade Integration:**
+### **Input Handling:**
 
-```python
-# Example: Registering context-aware input
-class InputManager:
-    def __init__(self):
-        self.contexts = {}
-        self.context_stack = ["exploration"]
+```typescript
+// Example: Registering context-aware input
+class InputManager {
+    private contexts: Record<string, any> = {};
+    private contextStack: string[] = ["exploration"];
 
-    def register_action(self, context: str, action: str, callback):
-        if context not in self.contexts:
-            self.contexts[context] = {}
-        self.contexts[context][action] = callback
+    registerAction(context: string, action: string, callback: () => void) {
+        if (!this.contexts[context]) {
+            this.contexts[context] = {};
+        }
+        this.contexts[context][action] = callback;
+    }
 
-    def on_key_press(self, key, modifiers):
-        current_context = self.context_stack[-1]
-        config = load_controls()
+    handleInput(key: string) {
+        const currentContext = this.contextStack[this.contextStack.length - 1];
+        const config = loadControls();
 
-        for action, binding in config["contexts"][current_context].items():
-            if key in binding["keys"]:
-                callback = self.contexts[current_context].get(action)
-                if callback:
-                    callback()
-                    return True  # Consumed
+        const action = config.contexts[currentContext][key];
+        if (action) {
+            const callback = this.contexts[currentContext][action];
+            if (callback) {
+                callback();
+                return true; // Consumed
+            }
+        }
 
-        return False  # Not handled
+        return false; // Not handled
+    }
+}
 ```
 
 ### **Save Format:**

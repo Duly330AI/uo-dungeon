@@ -36,13 +36,13 @@ FORD ist ein Single-Player 2D-Dungeon-Crawler in **React + TypeScript + HTML5 Ca
 ## 2) Projektstruktur (Top-Level)
 
 ```
-game/
-  main.py                 # App/Window bootstrap
-  components/             # React-Components, Canvas, Adapter
-  systems/                # Reine Logik (combat, skills, loot, crafting, save, ...)
-  entities/               # Datenmodelle (player, enemy, projectiles, ...)
+src/
+  App.tsx                 # Main entry point
+  components/             # React components, Canvas, Adapter
+  systems/                # Pure logic (combat, skills, loot, crafting, save, ...)
+  entities/               # Data models (player, enemy, projectiles, ...)
   util/                   # BSP, LOS, RNG, pathfinding, camera, prof, ...
-  assets/                 # CC0 Platzhaltergrafiken/SFX (kein Code)
+  assets/                 # Static assets
 data/
   ...                     # JSON-Daten + schemas/
 tests/
@@ -122,7 +122,7 @@ Outcome Events (Hit, Miss, Crit, Block, Damage, ApplyEffect, Death, Drop, Log)
 * **Combat**: **rundenbasiert** (M2). State-Änderungen (HP, Effekte, Position pro Zug) sind **diskret**.
 * Beide Modi teilen sich dieselbe Simulationszeit (`sim_turn`), daher keine Zeit-Synchronisationsprobleme.
 
-**Timekeeper (`util/timekeeper.py`)**
+**Timekeeper (`util/timekeeper.ts`)**
 
 * liefert `sim_turn` und Modi-Flags (`exploration_active`, `combat_active`).
 * steuert Runden-Fortschritt für Crafting, Respawn und Effekte einheitlich.

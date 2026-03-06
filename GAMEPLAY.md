@@ -33,7 +33,7 @@
 - **Debug-Overlay**: `F3` (FPS/Seed/Coords/Profiler)
 - **QuickSave/QuickLoad**: `F5` / `F9` (wenn aktiviert; Save-Policy beachten)
 
-> **Remapping** geplant über `game/util/input.py`. Standard-Belegung ist datengetrieben.
+> **Remapping** planned via `config/controls.json`. Default bindings are data-driven.
 
 ### HUD
 

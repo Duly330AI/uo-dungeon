@@ -1,8 +1,8 @@
 # Save/Load
 
 ## Format
-- JSON (gzip) standard; MsgPack optional
-- Integrität: SHA-256 über unkomprimierte Nutzlast
+- JSON (standard)
+- Integrität: SHA-256 über Nutzlast
 - `schema_version` im Root
 
 ## Slots
@@ -15,4 +15,4 @@
 - Autosave: Raumwechsel, Craft fertig, Elite-Kill (gedrosselt)
 
 ## Migration
-- `save_migrate.py` vN→vN+1, Tests mit Fixtures
+- `save_migrate.ts` vN→vN+1, Tests mit Fixtures

@@ -35,7 +35,7 @@ npm run preview
 - `npm run dev` - Start the Vite dev server
 - `npm run build` - Build the application for production
 - `npm run preview` - Preview the production build locally
-- `npm run lint` - Run ESLint to find and fix problems
+- `npm run lint` - Run TypeScript check
 
 ---
 
