@@ -88,7 +88,7 @@ entities ◄──────────┘  (Datenmodelle)
 Input (Keyboard/Mouse)
    │
    ▼
-Scene erzeugt Intent(en)
+Component/Input-Layer erzeugt Intent(s)
    - Move(to tile)
    - Attack(target)
    - Shoot(target)
@@ -108,11 +108,11 @@ systems/combat.resolve_intent(state, intent, rng)
    ▼
 Outcome Events (Hit, Miss, Crit, Block, Damage, ApplyEffect, Death, Drop, Log)
    │
-   ├─ Scene: Visuals (Particles, ScreenShake, Projectiles), Audio
+   ├─ Components/Adapter: Visuals (Particles, ScreenShake, Projectiles), Audio
    └─ systems/…: State-Updates, Logs, Hooks (loot, skills, drops)
 ```
 
-**Wichtig:** Systems geben **nur Datenereignisse** zurück. Visualisierung erfolgt **nachgelagert** durch Scene/Adapter.
+**Wichtig:** Systems geben **nur Datenereignisse** zurück. Visualisierung erfolgt **nachgelagert** durch Components/Adapter.
 
 ---
 
@@ -135,7 +135,7 @@ Outcome Events (Hit, Miss, Crit, Block, Damage, ApplyEffect, Death, Drop, Log)
 **Streams:** `core`, `loot`, `combat`, `craft`.
 **API:**
 
-```python
+```ts
 const rng = new RngStream({ seed: 1337, algo: "pcg32" });
 const state = rng.exportState();
 const rng2 = RngStream.importState(state);
@@ -173,27 +173,31 @@ const rng2 = RngStream.importState(state);
 
 **TypeScript Interfaces** (no DOM dependency):
 
-```python
-@dataclass
-class EntityId:
-    kind: Literal["player", "enemy", "projectile"]
-    uid: str  # stable
+```ts
+type EntityKind = "player" | "enemy" | "projectile";
 
-@dataclass
-class Stats:
-    hp: int; hp_max: int
-    mana: int; stamina: int
-    base: dict[str, int]  # str/dex/int
-    mods: dict[str, float]  # applied from equipment/effects
+interface EntityId {
+  kind: EntityKind;
+  uid: string; // stable
+}
 
-@dataclass
-class Player:
-    id: EntityId
-    pos_tile: Vec2i
-    stats: Stats
-    inventory: Inventory
-    equipment: Equipment
-    skills: Skills
+interface Stats {
+  hp: number;
+  hpMax: number;
+  mana: number;
+  stamina: number;
+  base: Record<string, number>; // str/dex/int
+  mods: Record<string, number>; // applied from equipment/effects
+}
+
+interface Player {
+  id: EntityId;
+  posTile: Vec2i;
+  stats: Stats;
+  inventory: Inventory;
+  equipment: Equipment;
+  skills: Skills;
+}
 ```
 
 Enemies referenzieren `monsters.json`-Archetypen + laufzeitliche Felder (HP, Effekte, pos).
@@ -309,26 +313,32 @@ In Tests liefern Adapter **No-Ops**; in `components/*` werden sie mit Browser-Im
 
 ## 20) Öffentliche APIs (Signaturen, exemplarisch)
 
-```python
+```ts
 # systems/combat.ts
-def resolve_turn(state: CombatState, intents: list[Intent], rng: RngStream) -> list[Outcome]: ...
+export function resolveTurn(
+  state: CombatState,
+  intents: Intent[],
+  rng: RngStream
+): Outcome[] { /* ... */ }
 
-# systems/initiative.py
-def roll_initiative(rng: RngStream, participants: list[Actor]) -> Initiative: ...
+# systems/initiative.ts
+export function rollInitiative(rng: RngStream, participants: Actor[]): Initiative { /* ... */ }
 
-# systems/loot.py
-def roll_table(table_id: str, rng: RngStream, unique_once: bool = False) -> list[Drop]: ...
+# systems/loot.ts
+export function rollTable(tableId: string, rng: RngStream, uniqueOnce = false): Drop[] { /* ... */ }
 
-# systems/crafting.py
-class CraftingStationState:
-    def enqueue(self, recipe_id: str, count: int, inv: Inventory, rng: RngStream) -> None: ...
-    def tick_turns(self, turns: int, inv: Inventory, rng: RngStream) -> list[CraftOutcome]: ...
+# systems/crafting.ts
+export class CraftingStationState {
+  enqueue(recipeId: string, count: number, inv: Inventory, rng: RngStream): void { /* ... */ }
+  tickTurns(turns: number, inv: Inventory, rng: RngStream): CraftOutcome[] { return []; }
+}
 
-# systems/inventory.py
-class Inventory:
-    def add(self, item_id: str, qty: int) -> None: ...
-    def remove(self, item_id: str, qty: int) -> None: ...
-    def split_stack(self, slot: int, qty: int) -> int: ...
+# systems/inventory.ts
+export class Inventory {
+  add(itemId: string, qty: number): void { /* ... */ }
+  remove(itemId: string, qty: number): void { /* ... */ }
+  splitStack(slot: number, qty: number): number { return slot; }
+}
 ```
 
 ---
@@ -344,11 +354,11 @@ class Inventory:
 
 ## 22) Erweiterbarkeit (Extension Points)
 
-* Neue **Effekte**: `effects.json` + Handler in `systems/effects.py`.
-* Neue **Schadenstypen**: `combat_rules.json` + `systems/damage.py`.
-* Neue **Stationen**: `stations.json` + Registrierung in `util/stations.py`.
-* **Controller-Support**: nur Scene-Eingabemapping, Systems bleiben unverändert.
-* **Shader/Polish**: Scene-lokal (Vignette/Scanlines), Systems unberührt.
+* Neue **Effekte**: `effects.json` + Handler in `systems/effects.ts`.
+* Neue **Schadenstypen**: `combat_rules.json` + `systems/damage.ts`.
+* Neue **Stationen**: `stations.json` + Registrierung in `util/stations.ts`.
+* **Controller-Support**: nur Component-Eingabemapping, Systems bleiben unverändert.
+* **Shader/Polish**: Component-lokal (Vignette/Scanlines), Systems unberührt.
 
 ---
 
@@ -375,7 +385,7 @@ class Inventory:
 **Angriff (Ranged)**
 
 ```
-Scene: click auf Gegner → Intent.Shoot(target)
+Component: click auf Gegner → Intent.Shoot(target)
 → systems/los.check(...)
 → hit_chance = base + (atk_skill - def_skill)/skill_scale + (ATK - DEF)/atkdef_scale
 → roll random(0-1) vs hit_chance
@@ -385,10 +395,10 @@ Scene: click auf Gegner → Intent.Shoot(target)
 **Gather → Craft**
 
 ```
-Scene: Interact(E) → begin_gather(node)
+Component: Interact(E) → begin_gather(node)
 → systems/gather: tool+skill prüfen, Dauer bestimmen
 → Abschluss: nodes.gather → inventory.add(drops)
-→ Scene: near station → enqueue(recipe_id) in crafting
+→ Component: near station → enqueue(recipe_id) in crafting
 → TickTurns(1) → success/fail/crit → outputs to inv
 ```
 

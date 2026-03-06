@@ -64,10 +64,10 @@ FORD uses [JSON Schema Draft 2020-12](https://json-schema.org/draft/2020-12/sche
 
 ```bash
 # Validate all data files
-python scripts/validate_content.py --root .
+npm run validate
 
 # Strict mode (warnings = errors)
-npm run validate --strict
+npm run validate -- --strict
 ```
 
 ---
@@ -685,11 +685,15 @@ npm run validate --strict
 
 ### **Spell → Item (Reagents):**
 
-```python
-# Validation
-for spell in spells:
-    for reagent_id in spell['cost']['reagents'].keys():
-        assert reagent_id in item_ids, f"Spell {spell['id']} references unknown reagent {reagent_id}"
+```ts
+// Validation
+for (const spell of spells) {
+  for (const reagentId of Object.keys(spell.cost.reagents ?? {})) {
+    if (!itemIds.has(reagentId)) {
+      throw new Error(`Spell ${spell.id} references unknown reagent ${reagentId}`);
+    }
+  }
+}
 ```
 
 **Example:**
@@ -704,26 +708,38 @@ for spell in spells:
 
 ### **Quest → Item (Rewards):**
 
-```python
-for quest in quests:
-    for item_id in quest['rewards']['items']:
-        assert item_id in item_ids, f"Quest {quest['id']} rewards unknown item {item_id}"
+```ts
+for (const quest of quests) {
+  for (const itemId of quest.rewards?.items ?? []) {
+    if (!itemIds.has(itemId)) {
+      throw new Error(`Quest ${quest.id} rewards unknown item ${itemId}`);
+    }
+  }
+}
 ```
 
 ### **Vendor → Item (Inventory):**
 
-```python
-for vendor in vendors:
-    for inv_entry in vendor['inventory']:
-        assert inv_entry['item_id'] in item_ids, f"Vendor {vendor['id']} sells unknown item"
+```ts
+for (const vendor of vendors) {
+  for (const entry of vendor.inventory ?? []) {
+    if (!itemIds.has(entry.item_id)) {
+      throw new Error(`Vendor ${vendor.id} sells unknown item ${entry.item_id}`);
+    }
+  }
+}
 ```
 
 ### **Biome → Item (Reagent Bias):**
 
-```python
-for biome in biomes:
-    for reagent_id in biome['reagents_bias']:
-        assert reagent_id in item_ids, f"Biome {biome['id']} references unknown reagent"
+```ts
+for (const biome of biomes) {
+  for (const reagentId of biome.reagents_bias ?? []) {
+    if (!itemIds.has(reagentId)) {
+      throw new Error(`Biome ${biome.id} references unknown reagent ${reagentId}`);
+    }
+  }
+}
 ```
 
 ---
@@ -755,7 +771,7 @@ for biome in biomes:
 
 ```bash
 # Validate all data
-python scripts/validate_content.py --root .
+npm run validate
 
 # Expected output:
 # [OK]   data/items.json: 121 items
@@ -811,7 +827,7 @@ python scripts/validate_content.py --root .
 When making breaking changes to schemas:
 
 1. **Increment major version** (1.0 → 2.0)
-2. **Provide migration script** (`scripts/migrate_v1_to_v2.py`)
+2. **Provide migration script** (`scripts/migrate_v1_to_v2.ts`)
 3. **Update this document** with migration guide
 4. **Test with all existing data**
 5. **Announce in CHANGELOG.md**
@@ -823,9 +839,9 @@ When making breaking changes to schemas:
 - **Schemas:** `data/schemas/*.schema.json`
 - **Data:** `data/*.json` and `data/*/*.json`
 - **Validator:** `scripts/validate_content.py`
-- **Conventions:** `docs/CONVENTIONS.md`
-- **Docs:** `docs/ITEMIZATION_DESIGN.md` (item-specific design)
-- **Docs:** `docs/MAGIC_SYSTEM.md` (spell-specific design)
+- **Conventions:** `CONVENTIONS.md`
+- **Docs:** `ITEMIZATION_DESIGN.md` (item-specific design)
+- **Docs:** `MAGIC_SYSTEM.md` (spell-specific design)
 
 ---
 
@@ -833,33 +849,26 @@ When making breaking changes to schemas:
 
 ### **Generate Sample Data:**
 
-```python
-# scripts/generate_sample_from_schema.py
-import json
-from jsonschema import Draft202012Validator
+```ts
+// scripts/generate-sample-from-schema.ts (optional utility)
+import { readFile } from "node:fs/promises";
 
-schema = json.load(open('data/schemas/item.schema.json'))
-# Use faker or hypothesis to generate valid samples
+const schemaRaw = await readFile("data/schemas/item.schema.json", "utf-8");
+const schema = JSON.parse(schemaRaw);
+// Use a generator library to create valid sample data from schema
+console.log(schema.$schema);
 ```
 
 ### **Validate Single File:**
 
-```python
-import json
-from jsonschema import Draft202012Validator
-
-schema = json.load(open('data/schemas/item.schema.json'))
-data = json.load(open('data/items.json'))
-validator = Draft202012Validator(schema)
-
-for item in data:
-    errors = list(validator.iter_errors(item))
-    if errors:
-        print(f"Item {item['id']} has errors:")
-        for err in errors:
-            print(f"  - {err.message}")
+```ts
+// Single-file validation should reuse project tooling:
+// npm run validate
+//
+// For ad-hoc checks, implement a small TypeScript script
+// that loads one schema + one data file and runs the same rules.
 ```
 
 ---
 
-**Questions?** Check `docs/CONVENTIONS.md` for naming rules and `scripts/README_VALIDATE.md` for validation workflow.
+**Questions?** Check `CONVENTIONS.md` for naming rules and `scripts/validate_content.py` for validation workflow.
