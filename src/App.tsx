@@ -18,7 +18,6 @@ export default function App() {
   const engineRef = useRef(new GameEngine());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [gameState, setGameState] = useState(engineRef.current.getState());
 
   const render = useCallback((ctx: CanvasRenderingContext2D, map: MapData, playerPos: Vec2i) => {
     const canvas = ctx.canvas;
@@ -30,14 +29,28 @@ export default function App() {
     const dungeonSheet = AssetManager.getImage('dungeon');
     const charSheet = AssetManager.getImage('chars');
 
-    if (!dungeonSheet || !charSheet) return;
+    if (!dungeonSheet || !charSheet) {
+      // Fallback rendering only if explicitly missing assets
+      ctx.fillStyle = '#333';
+      for (let y = 0; y < map.height; y++) {
+        for (let x = 0; x < map.width; x++) {
+          if (!visible[y][x]) continue;
+          if (map.tiles[y][x] === 'WALL') {
+            ctx.fillRect(x * TILE_SIZE - (playerPos.x * TILE_SIZE - canvas.width / 2 + TILE_SIZE / 2), y * TILE_SIZE - (playerPos.y * TILE_SIZE - canvas.height / 2 + TILE_SIZE / 2), TILE_SIZE, TILE_SIZE);
+          }
+        }
+      }
+      ctx.fillStyle = 'red';
+      ctx.fillRect(canvas.width / 2 - TILE_SIZE / 2, canvas.height / 2 - TILE_SIZE / 2, TILE_SIZE, TILE_SIZE);
+      return;
+    }
 
     // Camera centers on player
     const cameraX = playerPos.x * TILE_SIZE - canvas.width / 2 + TILE_SIZE / 2;
     const cameraY = playerPos.y * TILE_SIZE - canvas.height / 2 + TILE_SIZE / 2;
 
     const drawSprite = (img: HTMLImageElement, sx: number, sy: number, x: number, y: number) => {
-      ctx.drawImage(img, sx * 16, sy * 16, 16, 16, x * TILE_SIZE - cameraX, y * TILE_SIZE - cameraY, TILE_SIZE, TILE_SIZE);
+      ctx.drawImage(img, sx * 16, sy * 16, 16, 16, Math.floor(x * TILE_SIZE - cameraX), Math.floor(y * TILE_SIZE - cameraY), TILE_SIZE, TILE_SIZE);
     };
 
     for (let y = 0; y < map.height; y++) {
@@ -72,7 +85,6 @@ export default function App() {
         ]);
         
         engineRef.current.init();
-        setGameState({ ...engineRef.current.getState() });
         setLoading(false);
       } catch (err: any) {
         console.error('Failed to load game data or assets:', err);
@@ -84,15 +96,6 @@ export default function App() {
 
   useEffect(() => {
     if (loading || error) return;
-
-    const handleResize = () => {
-      if (canvasRef.current) {
-        canvasRef.current.width = window.innerWidth;
-        canvasRef.current.height = window.innerHeight;
-        setGameState({ ...engineRef.current.getState() });
-      }
-    };
-    window.addEventListener('resize', handleResize);
 
     const handleKeyDown = (e: KeyboardEvent) => {
       let intent: Intent | null = null;
@@ -114,35 +117,46 @@ export default function App() {
           if (intent.type === 'MOVE') {
             AudioManager.playFootstep();
           }
-          setGameState({ ...engineRef.current.getState() });
         }
       }
     };
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [loading, error]);
 
   useEffect(() => {
-    if (loading || error || !canvasRef.current || !gameState.map) return;
+    if (loading || error || !canvasRef.current) return;
     
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    if (canvas.width !== window.innerWidth || canvas.height !== window.innerHeight) {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
+    let animationFrameId: number;
 
-    // Disable image smoothing for crisp pixel art
-    ctx.imageSmoothingEnabled = false;
+    const renderLoop = () => {
+      if (canvas.width !== window.innerWidth || canvas.height !== window.innerHeight) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        ctx.imageSmoothingEnabled = false;
+      }
 
-    render(ctx, gameState.map, gameState.playerPos);
-  }, [loading, error, gameState, render]);
+      const state = engineRef.current.getState();
+      if (state.map) {
+        render(ctx, state.map, state.playerPos);
+      }
+
+      animationFrameId = requestAnimationFrame(renderLoop);
+    };
+
+    renderLoop();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [loading, error, render]);
 
   if (error) {
     return (
@@ -168,3 +182,4 @@ export default function App() {
     />
   );
 }
+

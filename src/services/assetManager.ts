@@ -7,6 +7,7 @@ export class AssetManager {
     }
     return new Promise((resolve, reject) => {
       const img = new Image();
+      img.referrerPolicy = 'no-referrer';
       img.onload = () => {
         this.images[key] = img;
         resolve(img);

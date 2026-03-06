@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Combat Rules",
+  "type": "object",
+  "properties": {
+    "hit_chance": {
+      "type": "object",
+      "properties": {
+        "atk_stat_factor": { "type": "number" },
+        "def_stat_factor": { "type": "number" },
+        "base": { "type": "number" },
+        "skill_scale": { "type": "number" },
+        "atkdef_scale": { "type": "number" },
+        "min": { "type": "number" },
+        "max": { "type": "number" }
+      },
+      "required": ["atk_stat_factor", "def_stat_factor", "base", "skill_scale", "atkdef_scale", "min", "max"],
+      "additionalProperties": false
+    },
+    "parry": {
+      "type": "object",
+      "properties": {
+        "shield_base": { "type": "number" },
+        "dex_factor": { "type": "number" },
+        "skill_scale": { "type": "number" },
+        "cap": { "type": "number" },
+        "damage_reduction": { "type": "number" }
+      },
+      "required": ["shield_base", "dex_factor", "skill_scale", "cap", "damage_reduction"],
+      "additionalProperties": false
+    },
+    "damage": {
+      "type": "object",
+      "properties": {
+        "str_per_bonus": { "type": "number" },
+        "tactics_mult": { "type": "number" },
+        "anatomy_mult": { "type": "number" },
+        "min_damage": { "type": "number" }
+      },
+      "required": ["str_per_bonus", "tactics_mult", "anatomy_mult", "min_damage"],
+      "additionalProperties": false
+    },
+    "movement": {
+      "type": "object",
+      "properties": {
+        "base_tiles": { "type": "number" },
+        "dex_tile_step": { "type": "number" },
+        "max_tiles": { "type": "number" }
+      },
+      "required": ["base_tiles", "dex_tile_step", "max_tiles"],
+      "additionalProperties": false
+    },
+    "recovery": {
+      "type": "object",
+      "properties": {
+        "max_recovery": { "type": "number" },
+        "weapon_base_delay": {
+          "type": "object",
+          "additionalProperties": { "type": "number" }
+        },
+        "dex_reduction_step": { "type": "number" }
+      },
+      "required": ["max_recovery", "weapon_base_delay", "dex_reduction_step"],
+      "additionalProperties": false
+    },
+    "ranged": {
+      "type": "object",
+      "properties": {
+        "bow_base_reload": { "type": "number" },
+        "xbow_base_reload": { "type": "number" },
+        "heavy_xbow_base_reload": { "type": "number" },
+        "dex_reload_step": { "type": "number" }
+      },
+      "required": ["bow_base_reload", "xbow_base_reload", "heavy_xbow_base_reload", "dex_reload_step"],
+      "additionalProperties": false
+    },
+    "initiative": {
+      "type": "object",
+      "properties": {
+        "dice": { "type": "string" },
+        "dex_weight": { "type": "number" },
+        "stam_weight": { "type": "number" },
+        "weapon_ready_bonus": {
+          "type": "object",
+          "properties": {
+            "light": { "type": "number" },
+            "medium": { "type": "number" },
+            "heavy": { "type": "number" }
+          },
+          "required": ["light", "medium", "heavy"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["dice", "dex_weight", "stam_weight", "weapon_ready_bonus"],
+      "additionalProperties": false
+    },
+    "dodge": {
+      "type": "object",
+      "properties": {
+        "stamina_cost": { "type": "number" },
+        "movement_tiles": { "type": "number" },
+        "evade_bonus": { "type": "number" },
+        "duration_turns": { "type": "number" },
+        "blocks_recovery": { "type": "boolean" },
+        "requires_clear_path": { "type": "boolean" }
+      },
+      "required": ["stamina_cost", "movement_tiles", "evade_bonus", "duration_turns", "blocks_recovery", "requires_clear_path"],
+      "additionalProperties": false
+    },
+    "crit": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "chance": { "type": "number" },
+        "mult": { "type": "number" }
+      },
+      "required": ["enabled", "chance", "mult"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["hit_chance", "parry", "damage", "movement", "recovery", "ranged", "initiative", "dodge", "crit"],
+  "additionalProperties": false
+}

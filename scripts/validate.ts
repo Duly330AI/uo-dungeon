@@ -73,6 +73,22 @@ const combatRulesData = readJson(`${dataRoot}/combat_rules.json`, true) as Recor
 if (!validateArrayItems(itemsData, `${dataRoot}/schemas/item.schema.json`, 'items.json')) hasErrors = true;
 if (!validateArrayItems(skillsData, `${dataRoot}/schemas/skill.schema.json`, 'skills.json')) hasErrors = true;
 if (!validateArrayItems(spellsData, `${dataRoot}/schemas/spell.schema.json`, 'spells.json')) hasErrors = true;
+if (!validateArrayItems(monstersData, `${dataRoot}/schemas/monster.schema.json`, 'monsters.json')) hasErrors = true;
+
+// Validate combat_rules.json (it's a single object, not an array)
+try {
+  const combatSchema = readJson(`${dataRoot}/schemas/combat_rules.schema.json`, true);
+  const validateCombat = ajv.compile(combatSchema as object);
+  if (!validateCombat(combatRulesData)) {
+    console.error(`combat_rules.json invalid: ${formatErrors(validateCombat.errors)}`);
+    hasErrors = true;
+  } else {
+    console.log(`combat_rules.json validated successfully.`);
+  }
+} catch (err) {
+  console.error(`combat_rules.json: ${(err as Error).message}`);
+  hasErrors = true;
+}
 
 // Optional files + schemas
 const optional = [

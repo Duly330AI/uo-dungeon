@@ -12,12 +12,6 @@ export class AudioManager {
     }
   }
 
-  // We no longer need to load external .ogg files, avoiding Safari decoding errors.
-  static async loadSound(key: string, url: string) {
-    // No-op: we use synthetic sounds now.
-    return Promise.resolve();
-  }
-
   static playFootstep() {
     if (!this.ctx) return;
 

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Monster",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "hp": { "type": "number" },
+    "speed": { "type": "number" },
+    "ai": { "type": "string" },
+    "loot_table": { "type": "string" }
+  },
+  "required": ["id", "hp", "speed", "ai", "loot_table"],
+  "additionalProperties": false
+}
