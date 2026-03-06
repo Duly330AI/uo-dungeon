@@ -1,5 +1,4 @@
 export type EntityKind = "player" | "enemy" | "projectile";
-<<<<<<< HEAD
 export type IntentType = "move" | "attack" | "shoot" | "cast" | "useItem" | "wait";
 export type OutcomeType =
   | "moved"
@@ -11,8 +10,6 @@ export type OutcomeType =
   | "drop"
   | "message"
   | "wait";
-=======
->>>>>>> aca68e3a7c0535868b373a35052e5025584c7d1f
 
 export interface Vec2i {
   x: number;
@@ -33,7 +30,6 @@ export interface Stats {
   mods: Record<string, number>; // applied from equipment/effects
 }
 
-<<<<<<< HEAD
 export interface ItemStack {
   itemId: string;
   qty: number;
@@ -42,10 +38,7 @@ export interface ItemStack {
 export interface Inventory {
   slots: Array<ItemStack | null>;
 }
-=======
-// Placeholder interfaces for now, to be expanded in Phase 2
-export interface Inventory {}
->>>>>>> aca68e3a7c0535868b373a35052e5025584c7d1f
+
 export interface Equipment {}
 export interface Skills {}
 
@@ -57,7 +50,6 @@ export interface Player {
   equipment: Equipment;
   skills: Skills;
 }
-<<<<<<< HEAD
 
 export interface Actor {
   id: string;
@@ -95,5 +87,3 @@ export interface Drop {
   itemId: string;
   qty: number;
 }
-=======
->>>>>>> aca68e3a7c0535868b373a35052e5025584c7d1f

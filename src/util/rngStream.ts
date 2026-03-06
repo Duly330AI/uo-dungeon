@@ -3,20 +3,11 @@ export interface RngStreamOptions {
   algo: "pcg32";
 }
 
-<<<<<<< HEAD
-interface RngState {
-  seed: number;
-  algo: "pcg32";
-}
-
-=======
->>>>>>> aca68e3a7c0535868b373a35052e5025584c7d1f
 export class RngStream {
   private seed: number;
   private algo: "pcg32";
 
   constructor(options: RngStreamOptions) {
-<<<<<<< HEAD
     this.seed = options.seed >>> 0;
     this.algo = options.algo;
   }
@@ -39,25 +30,12 @@ export class RngStream {
     return minInclusive + Math.floor(this.nextFloat() * range);
   }
 
-=======
-    this.seed = options.seed;
-    this.algo = options.algo;
-  }
-
->>>>>>> aca68e3a7c0535868b373a35052e5025584c7d1f
   exportState(): string {
     return JSON.stringify({ seed: this.seed, algo: this.algo });
   }
 
   static importState(state: string): RngStream {
-<<<<<<< HEAD
-    const parsed = JSON.parse(state) as Partial<RngState>;
-    if (typeof parsed.seed !== "number" || parsed.algo !== "pcg32") {
-      throw new Error("Invalid RNG state payload.");
-    }
-=======
     const parsed = JSON.parse(state);
->>>>>>> aca68e3a7c0535868b373a35052e5025584c7d1f
     return new RngStream({ seed: parsed.seed, algo: parsed.algo });
   }
 }
