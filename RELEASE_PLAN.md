@@ -1,25 +1,25 @@
-# RELEASE_PLAN (FORD) — Packaging & Distribution (Arcade + PyInstaller)
+# RELEASE_PLAN (FORD) — Packaging & Distribution (Web / PWA / Desktop)
 
 ## 1) Zielplattformen
-Windows (x64), Linux (x86_64), macOS (Intel/Universal, signieren optional).
+Web-Browser (Chrome, Firefox, Safari), optional Desktop via Electron/Tauri (Windows, macOS, Linux).
 
 ## 2) Build‑Tooling
-- **Poetry** für Dependencies (`pyproject.toml`).
-- **PyInstaller**: one‑folder Bundles; Assets unter `data/` & `audio/` via `--add-data` einbinden.
-- **Start‑Script**: `python -m ford.main` → in `entrypoint.spec` verankern.
+- **npm / yarn / pnpm** für Dependencies (`package.json`).
+- **Vite**: Bundler für statische Assets (HTML, JS, CSS). Assets unter `public/` oder importiert.
+- **Start‑Script**: `npm run dev` (lokal) / `npm run build` (Produktion).
 
 ## 3) Artefakte
-- ZIP pro OS: `FORD_v{version}_{os}.zip` – enthält `ATTRIBUTIONS.md`, `LICENSE`, `README`.
-- Saves: OS‑konform (`%APPDATA%/FORD`, `~/.local/share/FORD`).
-- Crash/Logs: `logs/` unter User‑Pfad.
+- Statische Dateien in `dist/` (HTML, JS, CSS, Assets).
+- Saves: Browser-Persistenz (`IndexedDB`, `localStorage`).
+- Crash/Logs: Console Logs, optional Sentry/Telemetry.
 
 ## 4) Channels & Versionierung
 - SemVer (`0.x` bis Beta). Channels: `alpha` → `beta` → `stable`. Git‑Tags treiben CI.
 
 ## 5) CI/CD (Skizze GitHub Actions)
-- Matrix: `windows-latest`, `ubuntu-latest`, `macos-latest`.
-- Steps: `poetry install` → Lint/Tests → PyInstaller Build → Upload Artefakte.
-- Optional: Upload zu **itch.io** via `butler`. **Steam** später via `steamcmd`.
+- Matrix: `ubuntu-latest`.
+- Steps: `npm install` → Lint/Tests (`Vitest`) → `npm run build` → Deploy to Vercel/Netlify/GitHub Pages.
+- Optional: Desktop-Builds via Tauri/Electron für Steam/itch.io.
 
 ## 6) Milestones (Beispiel)
 - **Pre‑Alpha**: Core‑Loop spielbar (1 Zone, 5 Gegner, 1 Boss, Craft T1).

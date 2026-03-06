@@ -1,6 +1,6 @@
 # WORLD_BIBLE (FORD) — Welt, Fraktionen, Tonalität
 
-**Projekt:** FORD • **Engine:** Python + Arcade • **Kernidee:** Systemisch spielbare Grenzlande mit UO‑Feeling (0.1‑Skillgains), rundenbasiertem Kampf und datengetriebener Welt.
+**Projekt:** FORD • **Engine:** React + TypeScript + HTML5 Canvas • **Kernidee:** Systemisch spielbare Grenzlande mit UO‑Feeling (0.1‑Skillgains), rundenbasiertem Kampf und datengetriebener Welt.
 
 ---
 

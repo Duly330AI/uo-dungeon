@@ -14,10 +14,10 @@ This document defines naming conventions, coding standards, and data format rule
 |------|------------|---------|-------|
 | **File Names** | `snake_case.ext` | `combat_rules.json` | Lowercase, underscores |
 | **Directory Names** | `snake_case` | `data/schemas/` | Lowercase, underscores |
-| **Python Modules** | `snake_case` | `skill_system.py` | PEP 8 compliant |
-| **Python Classes** | `PascalCase` | `SkillSystem` | No underscores |
-| **Python Functions** | `snake_case` | `calculate_damage()` | Lowercase, underscores |
-| **Python Constants** | `SCREAMING_SNAKE_CASE` | `MAX_SKILL_CAP` | All caps |
+| **TypeScript Modules** | `camelCase` oder `kebab-case` | `skillSystem.ts` |  |
+| **TypeScript Classes** | `PascalCase` | `SkillSystem` | No underscores |
+| **TypeScript Functions** | `camelCase` | `calculateDamage()` | Lowercase, underscores |
+| **TypeScript Constants** | `SCREAMING_SNAKE_CASE` | `MAX_SKILL_CAP` | All caps |
 
 ---
 
@@ -133,27 +133,26 @@ This document defines naming conventions, coding standards, and data format rule
 
 ## 🔧 **Code Conventions**
 
-### **Python Style**
+### **TypeScript Style**
 
-- **Formatter:** Black (line-length=88)
-- **Linter:** Ruff (follows PEP 8)
-- **Type Hints:** Required for all functions
-- **Docstrings:** Google style
+- **Formatter:** Prettier
+- **Linter:** ESLint
+- **Type Hints:** Required for all functions/components
+- **Docstrings:** TSDoc style
 
 ### **Import Order**
 
-1. Standard library
-2. Third-party packages (arcade, pytest, etc.)
+1. React / Framework imports
+2. Third-party packages (lucide-react, etc.)
 3. Local application imports
 
-```python
+```typescript
 # ✅ Good
-import os
-from typing import Dict
+import React, { useState } from 'react';
 
-import arcade
+import { Shield } from 'lucide-react';
 
-from game.systems import SkillSystem
+import { SkillSystem } from '../systems/skillSystem';
 ```
 
 ---
@@ -278,7 +277,7 @@ Hierarchical dot-notation: `category.subcategory.item.field`
 
 ## 📚 **References**
 
-- **PEP 8:** Python style guide
+- **Prettier/ESLint:** TypeScript style guide
 - **UO Naming:** Classic Ultima Online conventions
 - **JSON Schema:** Draft 2020-12 specification
 - **i18n:** ICU MessageFormat for pluralization

@@ -11,11 +11,17 @@
 ## 🗺️ Übersicht der Meilensteine
 
 1. **Milestone 1: Core Engine & Exploration** (Pre-Alpha 1)
+   *Exit-Kriterium: Spieler kann sich auf einer generierten Map bewegen, Kollisionen und Sichtlinien (Fog of War) funktionieren.*
 2. **Milestone 2: Combat System & AI** (Pre-Alpha 2)
+   *Exit-Kriterium: 1v3 Combat läuft stabil, AI wählt Ziele/Taktiken, Replay ist seed-stable.*
 3. **Milestone 3: RPG Progression & Skills** (Alpha 1)
+   *Exit-Kriterium: Skills steigen bei Nutzung (0.1-Gains), UI zeigt Paperdoll und Skill-Locks.*
 4. **Milestone 4: Itemization, Loot & Inventory** (Alpha 2)
+   *Exit-Kriterium: Gegner droppen Loot, Items können im Grid-Inventar verwaltet und ausgerüstet werden.*
 5. **Milestone 5: Crafting, Nodes & Economy** (Beta 1)
+   *Exit-Kriterium: Spieler kann Ressourcen abbauen, Items craften und bei Händlern kaufen/verkaufen.*
 6. **Milestone 6: Save/Load, Polish & Release** (1.0)
+   *Exit-Kriterium: Spiel kann jederzeit gespeichert/geladen werden, 60 FPS stabil, keine Memory Leaks.*
 
 ---
 
@@ -106,6 +112,7 @@
     *   NPC-Vendors mit dynamischen Inventaren und Restock-Timern.
     *   Buy/Sell-Spread basierend auf Item-Rarität und Qualität.
     *   Gold als Währung.
+    *   *Hinweis:* `data/vendors.json` und `data/biomes.json` werden in diesem Milestone als minimale Datenbasis angelegt.
 
 ## 🔵 Milestone 6: Save/Load, Polish & Release (1.0)
 *Fokus: Persistenz, Feinschliff und Stabilität.*

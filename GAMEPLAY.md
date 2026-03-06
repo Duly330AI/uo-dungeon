@@ -1,6 +1,6 @@
 # FORD • GAMEPLAY.md
 
-> Single-Player 2D-Dungeon-Crawler in **Python + Arcade**.
+> Single-Player 2D-Dungeon-Crawler in **React + TypeScript + HTML5 Canvas**.
 > Kern: **Erkunden und Kämpfe vollständig rundenbasiert**, **Progression über Skills**, **datengetrieben** (Items, Rezepte, Gegner, Regeln liegen in `data/*.json`).
 
 ---

@@ -1,4 +1,4 @@
-# SOUND_DESIGN (FORD) — Audio‑Konzept für Python Arcade
+# SOUND_DESIGN (FORD) — Audio‑Konzept für Web Audio API
 
 ## 1) Zielbild
 - **Atmosphäre:** organisch, dunkel, lesbar; UI dezent.
@@ -7,7 +7,7 @@
 ---
 
 ## 2) Tech‑Stack
-- **Arcade** (pyglet) Audio; Wrapper „Mixer“ mit Bussen: `MUSIC`, `SFX`, `UI`.
+- **Web Audio API**; Wrapper „Mixer“ mit Bussen: `MUSIC`, `SFX`, `UI`.
 - **Snapshots/States:** Exploration, Combat, Indoor, Cavern (Reverb/LPF per Effekt-Ketten).
 - **3D/Cues:** Distanz‑Dämpfung + Low‑Pass ab Schwellwert; Pan nach Position.
 

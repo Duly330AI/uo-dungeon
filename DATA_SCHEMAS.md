@@ -60,14 +60,14 @@ FORD uses [JSON Schema Draft 2020-12](https://json-schema.org/draft/2020-12/sche
 └────────────────────────────────────────────────────────────┘
 ```
 
-**Validation Tool:** `scripts/validate_content.py`
+**Validation Tool:** `npm run validate`
 
 ```bash
 # Validate all data files
 python scripts/validate_content.py --root .
 
 # Strict mode (warnings = errors)
-python scripts/validate_content.py --root . --strict
+npm run validate --strict
 ```
 
 ---

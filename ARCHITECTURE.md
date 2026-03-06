@@ -1,7 +1,7 @@
 # FORD • ARCHITECTURE.md
 
 Ziel dieses Dokuments: **klare, stabile Architektur-Guidelines** für Entwicklung, Tests, Wartung und Erweiterbarkeit.
-FORD ist ein Single-Player 2D-Dungeon-Crawler in **Python + Arcade**, mit **vollständig rundenbasiertem Gameplay** (Erkundung + Kampf), **datengetriebenen** Systemen und strikt **getrennter** Rendering- vs. Gameplay-Logik.
+FORD ist ein Single-Player 2D-Dungeon-Crawler in **React + TypeScript + HTML5 Canvas**, mit **vollständig rundenbasiertem Gameplay** (Erkundung + Kampf), **datengetriebenen** Systemen und strikt **getrennter** Rendering- vs. Gameplay-Logik.
 
 ---
 
@@ -9,8 +9,8 @@ FORD ist ein Single-Player 2D-Dungeon-Crawler in **Python + Arcade**, mit **voll
 
 1. **Trennung von Zuständigkeiten**
 
-   * **systems/**: reine, deterministische **Gameplay-Logik** (keine Arcade/GL).
-   * **scenes/**: **Präsentation** (Arcade-Fenster, UI, Audio, Effekte).
+   * **systems/**: reine, deterministische **Gameplay-Logik** (kein DOM/Canvas).
+   * **components/**: **Präsentation** (React, Canvas, Audio, Effekte).
    * **entities/**: **Datencontainer** + dünne Helfer.
    * **util/**: wiederverwendbare **Hilfen** (BSP, LOS, Pfadfindung, RNG, Profiler).
    * **data/**: **JSON-Daten** + **Schemas** (einzige Quelle für Content & Regeln).
@@ -22,7 +22,7 @@ FORD ist ein Single-Player 2D-Dungeon-Crawler in **Python + Arcade**, mit **voll
    Eigener RNG-Wrapper mit **expliziten States** (Save/Load-fähig). Tests und Replays ergeben **identische** Abläufe bei gleichem Seed.
 
 4. **Kompromisslose Testbarkeit**
-   **systems/** & **util/** sind frei von Arcade; Unit-/Property-/Integrationstests laufen **headless**. Scenes/UI nur als Import-Smoketests in CI.
+   **systems/** & **util/** sind frei von Browser-APIs; Unit-/Property-/Integrationstests laufen **headless**. Components/UI nur als Import-Smoketests in CI.
 
 5. **Ereignisorientiert**
    Szenen erzeugen **Intents** (Benutzerabsichten). **Systems** verarbeiten und liefern **Outcomes** (Ereignisse) zurück.
@@ -38,7 +38,7 @@ FORD ist ein Single-Player 2D-Dungeon-Crawler in **Python + Arcade**, mit **voll
 ```
 game/
   main.py                 # App/Window bootstrap
-  scenes/                 # Arcade-Szenen, UI, Adapter
+  components/             # React-Components, Canvas, Adapter
   systems/                # Reine Logik (combat, skills, loot, crafting, save, ...)
   entities/               # Datenmodelle (player, enemy, projectiles, ...)
   util/                   # BSP, LOS, RNG, pathfinding, camera, prof, ...
@@ -65,7 +65,7 @@ entities ◄──────────┘  (Datenmodelle)
 
 **Regeln:**
 
-* `systems/*` **importieren niemals** Arcade/pyglet/scenes.
+* `systems/*` **importieren niemals** React/DOM/Canvas.
 * `scenes/*` **dürfen** `systems/*`, `entities/*`, `util/*` importieren.
 * Datenzugriff ausschließlich über `data_loader/validation`.
 * Adapter-APIs (z. B. `util/feedback.py`) sind **No-Ops** in Tests und werden in `scenes/*` gebunden.
@@ -165,13 +165,13 @@ rng2 = RngStream.import_state(state)
 | `systems/nodes.py`      | Node-State (Depletion/Respawn/Yield)   | data, rng                                             |
 | `systems/save_*`        | Save-Contract/Schema/Service/Migration | data                                                  |
 | `util/*`                | BSP, LOS, Pfad, Kamera, RNG, Profiler  | —                                                     |
-| `scenes/*`              | Arcade Windows, UI, Adapter-Bindings   | systems                                               |
+| `components/*`          | React, Canvas, Adapter-Bindings        | systems                                               |
 
 ---
 
 ## 9) Entities (Datenmodelle)
 
-**Dataclasses**/Pydantic-Modelle (keine Arcade-Abhängigkeit):
+**Dataclasses**/TypeScript-Interfaces (keine DOM-Abhängigkeit):
 
 ```python
 @dataclass
@@ -204,7 +204,7 @@ Enemies referenzieren `monsters.json`-Archetypen + laufzeitliche Felder (HP, Eff
 
 1. **BSP-Generator (`util/bsp.py`)** erzeugt **Grid** (`WALL|FLOOR`).
 2. **Adapter (`util/tilemap.py`)** wandelt Grid zu **Layer-Daten** (`ground`, `walls`, `decals`, `light-blockers`).
-3. **Scene** baut `arcade.TileMap`/`SpriteList` aus den Daten (Asset-IDs).
+3. **Renderer** zeichnet die Tiles auf das Canvas.
 4. **Kollision (`systems/collision.py`)** arbeitet direkt auf dem **Grid** (Nachbarzellen).
 
 **Performance:** Culling per **Viewport + Margin**; SpriteLists pro Layer.
@@ -271,7 +271,7 @@ Adapter bieten **stabile, testfreundliche** Oberflächen:
 * `util/audio_adapter.py` → `play_sfx(name)`
 * `scenes/ui_*` → Hotbar/Combat/Crafting Overlays
 
-In Tests liefern Adapter **No-Ops**; in `scenes/*` werden sie mit Arcade-Implementierungen gebunden.
+In Tests liefern Adapter **No-Ops**; in `components/*` werden sie mit Browser-Implementierungen gebunden.
 
 ---
 
@@ -338,7 +338,7 @@ class Inventory:
 * **Unit (breit):** stats, combat, effects, loot, inv, equip, skills, crafting, nodes, save.
 * **Property:** BSP-Konnektivität, Loot-Gewichte, Kollisions-Fuzz.
 * **Integration:** Player vs. Trio (M2), Kampf→Drop→Pickup→Equip/Use (M3), Erz→Ingot→Sword→Equip (M4), Save/Load-Roundtrip (M5).
-* **Smoke (UI/Scenes):** reine Import/Init-Tests, **skip** ohne GL (`ARCADE_HEADLESS=1`).
+* **Smoke (UI/Components):** reine Import/Init-Tests, **skip** ohne DOM (`jsdom`).
 
 ---
 

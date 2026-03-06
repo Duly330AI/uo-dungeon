@@ -14,7 +14,7 @@ This document describes the input system, keybinding configuration, and rebindin
 │                                                                │
 │  Keyboard/Mouse/Gamepad                                       │
 │           ↓                                                    │
-│  Raw Input Events (Arcade Input Handlers)                     │
+│  Raw Input Events (DOM/Keyboard/Mouse Handlers)                     │
 │           ↓                                                    │
 │  Input Manager (normalize & buffer)                           │
 │           ↓                                                    │

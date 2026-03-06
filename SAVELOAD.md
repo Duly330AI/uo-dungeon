@@ -6,7 +6,8 @@
 - `schema_version` im Root
 
 ## Slots
-`saves/slot-1/last.save`, `auto-###.save`, `quick.save`
+- Gespeichert in `IndexedDB` (für große Savegames) und `localStorage` (für Meta-Daten/Quick-Saves).
+- Slots: `slot-1`, `auto-save`, `quick-save`
 
 ## Policy
 - Save/QuickSave sind an sicheren Turn-Snapshots erlaubt (Turn Start/Turn End)
