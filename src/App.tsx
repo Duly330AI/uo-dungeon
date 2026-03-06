@@ -158,7 +158,7 @@ export default function App() {
         } else {
           const result = engineRef.current.processInput(intent);
           if (result.acted) {
-            if (intent.type === 'MOVE') {
+            if (result.actionType === 'move') {
               AudioManager.playFootstep();
             }
             if (result.message) {

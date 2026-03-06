@@ -14,6 +14,8 @@ export interface GameState {
   turn: number;
 }
 
+export type ActionType = 'move' | 'attack' | 'interact' | 'wait' | 'none';
+
 export class GameEngine {
   private state: GameState;
   private combatRules: any;
@@ -93,27 +95,31 @@ export class GameEngine {
     }
   }
 
-  public processInput(intent: Intent): { acted: boolean; message?: string } {
+  public processInput(intent: Intent): { acted: boolean; message?: string; actionType?: ActionType } {
     if (!this.state.map) return { acted: false };
     if (this.state.playerStats.hp <= 0) return { acted: false, message: 'You are dead.' };
 
     let acted = false;
     let message: string | undefined;
+    let actionType: ActionType = 'none';
 
     switch (intent.type) {
       case 'MOVE':
         const moveResult = this.handleMove(intent.dx, intent.dy);
         acted = moveResult.acted;
         message = moveResult.message;
+        actionType = moveResult.actionType || 'none';
         break;
       case 'INTERACT':
         const interactResult = this.handleInteract(intent.dx, intent.dy);
         acted = interactResult.acted;
         message = interactResult.message;
+        actionType = 'interact';
         break;
       case 'WAIT':
         acted = true;
         message = 'You wait.';
+        actionType = 'wait';
         break;
     }
 
@@ -122,12 +128,12 @@ export class GameEngine {
       if (aiMessage) {
         message = message ? `${message} ${aiMessage}` : aiMessage;
       }
-      return { acted: true, message };
+      return { acted: true, message, actionType };
     }
     return { acted: false, message };
   }
 
-  private handleMove(dx: number, dy: number): { acted: boolean; message?: string } {
+  private handleMove(dx: number, dy: number): { acted: boolean; message?: string; actionType?: ActionType } {
     const { map, playerPos, entities } = this.state;
     if (!map) return { acted: false };
 
@@ -148,7 +154,8 @@ export class GameEngine {
     const entityAt = entities.find(e => e.pos.x === newX && e.pos.y === newY && e.blocksMovement);
     if (entityAt) {
       if (entityAt.kind === 'enemy') {
-        return this.resolveCombat('player', entityAt);
+        const combatResult = this.resolveCombat('player', entityAt);
+        return { ...combatResult, actionType: 'attack' };
       }
       return { acted: false, message: 'Blocked.' };
     }
@@ -163,7 +170,7 @@ export class GameEngine {
     }
 
     this.state.playerPos = { x: newX, y: newY };
-    return { acted: true };
+    return { acted: true, actionType: 'move' };
   }
 
   private handleInteract(dx: number, dy: number): { acted: boolean; message?: string } {
@@ -224,11 +231,12 @@ export class GameEngine {
         if (defender.id === 'player') {
              msg += " You die.";
         } else {
-            defender.state = 'dead';
+            defender.state = 'closed'; // Chest state closed = lootable
             defender.blocksMovement = false;
             defender.kind = 'chest'; // Turn into lootable corpse
             defender.name = `Dead ${defender.name}`;
-            this.state.entities = this.state.entities.filter(e => e.id !== defender.id);
+            defender.interactable = true; // Ensure it's interactable
+            // Do NOT remove from entities list
             msg += ` ${defender.name} dies.`;
         }
       }
@@ -302,6 +310,7 @@ export class GameEngine {
 
   private isBlocked(x: number, y: number): boolean {
     if (!this.state.map) return true;
+    if (x < 0 || y < 0 || x >= this.state.map.width || y >= this.state.map.height) return true;
     if (this.state.map.tiles[y][x] === 'WALL') return true;
     if (this.state.playerPos.x === x && this.state.playerPos.y === y) return true;
     if (this.state.entities.some(e => e.pos.x === x && e.pos.y === y && e.blocksMovement)) return true;
