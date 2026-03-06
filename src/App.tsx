@@ -19,6 +19,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<string[]>([]);
+  const [isInteracting, setIsInteracting] = useState(false);
 
   const render = useCallback((ctx: CanvasRenderingContext2D, map: MapData, playerPos: Vec2i, entities: Entity[]) => {
     const canvas = ctx.canvas;
@@ -120,17 +121,30 @@ export default function App() {
         case '7': case 'q': intent = { type: 'MOVE', dx: -1, dy: -1 }; break;
         case '8': case 'w': case 'ArrowUp': intent = { type: 'MOVE', dx: 0, dy: -1 }; break;
         case '9': case 'e': intent = { type: 'MOVE', dx: 1, dy: -1 }; break;
-        case 'f': intent = { type: 'INTERACT', dx: 0, dy: 0 }; break; // Simplified interaction
+        case 'f': setIsInteracting(true); setLogs(prev => [...prev.slice(-4), 'Interact in which direction?']); return;
       }
 
       if (intent) {
-        const result = engineRef.current.processInput(intent);
-        if (result.acted) {
-          if (intent.type === 'MOVE') {
-            AudioManager.playFootstep();
-          }
-          if (result.message) {
+        if (isInteracting && intent.type === 'MOVE') {
+          const interactIntent: Intent = { type: 'INTERACT', dx: intent.dx, dy: intent.dy };
+          const result = engineRef.current.processInput(interactIntent);
+          setIsInteracting(false);
+          if (result.acted) {
+            if (result.message) {
+              setLogs(prev => [...prev.slice(-4), result.message!]);
+            }
+          } else if (result.message) {
             setLogs(prev => [...prev.slice(-4), result.message!]);
+          }
+        } else {
+          const result = engineRef.current.processInput(intent);
+          if (result.acted) {
+            if (intent.type === 'MOVE') {
+              AudioManager.playFootstep();
+            }
+            if (result.message) {
+              setLogs(prev => [...prev.slice(-4), result.message!]);
+            }
           }
         }
       }
