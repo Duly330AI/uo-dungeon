@@ -1,92 +1,107 @@
 import fs from 'fs';
 import path from 'path';
-import Ajv from 'ajv/dist/2020.js';
+import Ajv, { type ErrorObject } from 'ajv/dist/2020.js';
 
 const ajv = new Ajv({ allErrors: true });
-
 const args = process.argv.slice(2);
 const isStrict = args.includes('--strict');
 
-console.log(`Running TypeScript validator... (Strict mode: ${isStrict})`);
+const dataRoot = fs.existsSync(path.join(process.cwd(), 'public', 'data')) ? 'public/data' : 'data';
 
-function loadJsonFile(filePath: string) {
-  const fullPath = path.join(process.cwd(), filePath);
+console.log(`Running TypeScript validator... (Strict mode: ${isStrict}, dataRoot: ${dataRoot})`);
+
+function readJson(relPath: string, required = false): unknown {
+  const fullPath = path.join(process.cwd(), relPath);
   if (!fs.existsSync(fullPath)) {
-    if (isStrict) {
-      console.error(`Missing file: ${fullPath}`);
-      return null;
+    const msg = `Missing file: ${fullPath}`;
+    if (required || isStrict) {
+      throw new Error(msg);
     }
+    console.warn(`[WARN] ${msg}`);
     return null;
   }
-  const rawData = fs.readFileSync(fullPath, 'utf-8');
-  return JSON.parse(rawData);
+
+  return JSON.parse(fs.readFileSync(fullPath, 'utf-8'));
 }
 
-function validateWithSchema(data: any, schemaPath: string, label: string) {
-  const schema = loadJsonFile(schemaPath);
-  if (!schema) {
-    console.warn(`[WARN] Schema not found: ${schemaPath}`);
-    return true; // Skip if schema doesn't exist
+function formatErrors(errors: ErrorObject[] | null | undefined): string {
+  if (!errors || errors.length === 0) {
+    return 'unknown validation error';
   }
-  
-  const validate = ajv.compile(schema);
-  // If data is an array but schema is for a single item, we validate each item
-  if (Array.isArray(data) && schema.type === 'object') {
-    let valid = true;
-    for (const item of data) {
-      if (!validate(item)) {
-        console.error(`Validation failed for ${label} item ${item.id || 'unknown'}:`);
-        console.error(validate.errors);
-        valid = false;
-      }
-    }
-    return valid;
-  } else {
-    const valid = validate(data);
-    if (!valid) {
-      console.error(`Validation failed for ${label}:`);
-      console.error(validate.errors);
+  return errors
+    .map((e) => `${e.instancePath || '/'} ${e.message || 'invalid'}`)
+    .join('; ');
+}
+
+function validateArrayItems(data: unknown, schemaRelPath: string, label: string): boolean {
+  try {
+    const schema = readJson(schemaRelPath, true);
+    const validate = ajv.compile(schema as object);
+
+    if (!Array.isArray(data)) {
+      console.error(`${label}: expected top-level array`);
       return false;
     }
-    return true;
+
+    let ok = true;
+    for (const [idx, item] of data.entries()) {
+      if (!validate(item)) {
+        console.error(`${label}[${idx}] invalid: ${formatErrors(validate.errors)}`);
+        ok = false;
+      }
+    }
+    if (ok) {
+      console.log(`${label} validated successfully.`);
+    }
+    return ok;
+  } catch (err) {
+    console.error(`${label}: ${(err as Error).message}`);
+    return false;
   }
 }
 
 let hasErrors = false;
 
-// Load Data
-const itemsData = loadJsonFile('public/data/items.json') || [];
-const skillsData = loadJsonFile('public/data/skills.json') || [];
-const spellsData = loadJsonFile('public/data/spells.json') || [];
-const monstersData = loadJsonFile('public/data/monsters.json') || [];
-const combatRulesData = loadJsonFile('public/data/combat_rules.json') || {};
+// Required core files
+const itemsData = readJson(`${dataRoot}/items.json`, true) as any[];
+const skillsData = readJson(`${dataRoot}/skills.json`, true) as any[];
+const spellsData = readJson(`${dataRoot}/spells.json`, true) as any[];
+const monstersData = readJson(`${dataRoot}/monsters.json`, true) as any[];
+const combatRulesData = readJson(`${dataRoot}/combat_rules.json`, true) as Record<string, any>;
 
-// Validate against JSON schemas
-if (!validateWithSchema(itemsData, 'public/data/schemas/item.schema.json', 'items.json')) hasErrors = true;
-if (!validateWithSchema(skillsData, 'public/data/schemas/skill.schema.json', 'skills.json')) hasErrors = true;
-if (!validateWithSchema(spellsData, 'public/data/schemas/spell.schema.json', 'spells.json')) hasErrors = true;
+// Schema validation for core files
+if (!validateArrayItems(itemsData, `${dataRoot}/schemas/item.schema.json`, 'items.json')) hasErrors = true;
+if (!validateArrayItems(skillsData, `${dataRoot}/schemas/skill.schema.json`, 'skills.json')) hasErrors = true;
+if (!validateArrayItems(spellsData, `${dataRoot}/schemas/spell.schema.json`, 'spells.json')) hasErrors = true;
 
-const optionalFiles = [
-  { data: 'public/data/biomes.json', schema: 'public/data/schemas/biome.schema.json' },
-  { data: 'public/data/encounters.json', schema: 'public/data/schemas/encounter.schema.json' },
-  { data: 'public/data/quests.json', schema: 'public/data/schemas/quest.schema.json' },
-  { data: 'public/data/vendors.json', schema: 'public/data/schemas/vendor.schema.json' },
+// Optional files + schemas
+const optional = [
+  { data: `${dataRoot}/biomes.json`, schema: `${dataRoot}/schemas/biome.schema.json`, label: 'biomes.json' },
+  { data: `${dataRoot}/encounters.json`, schema: `${dataRoot}/schemas/encounter.schema.json`, label: 'encounters.json' },
+  { data: `${dataRoot}/quests.json`, schema: `${dataRoot}/schemas/quest.schema.json`, label: 'quests.json' },
+  { data: `${dataRoot}/vendors.json`, schema: `${dataRoot}/schemas/vendor.schema.json`, label: 'vendors.json' },
 ];
 
-for (const { data, schema } of optionalFiles) {
-  const fullDataPath = path.join(process.cwd(), data);
-  if (fs.existsSync(fullDataPath)) {
-    const parsedData = loadJsonFile(data);
-    if (!validateWithSchema(parsedData, schema, path.basename(data))) {
+for (const entry of optional) {
+  const full = path.join(process.cwd(), entry.data);
+  if (!fs.existsSync(full)) {
+    if (isStrict) {
+      console.error(`Missing file: ${full}`);
       hasErrors = true;
+    } else {
+      console.warn(`[WARN] Missing optional file: ${full}`);
     }
+    continue;
+  }
+
+  const data = readJson(entry.data, true);
+  if (!validateArrayItems(data, entry.schema, entry.label)) {
+    hasErrors = true;
   }
 }
 
 // Cross-reference checks
 const itemIds = new Set(itemsData.map((i: any) => i.id));
-
-// Spell reagent check & caster_magery ban
 for (const spell of spellsData) {
   if (spell.cost?.reagents) {
     for (const reagentId of Object.keys(spell.cost.reagents)) {
@@ -96,16 +111,23 @@ for (const spell of spellsData) {
       }
     }
   }
+
   if (spell.id === 'caster_magery') {
-    console.error(`Spell 'caster_magery' is banned/invalid.`);
+    console.error(`Forbidden legacy id in spells.json: 'caster_magery'`);
     hasErrors = true;
   }
 }
 
-// Drift checks (Doc/data consistency)
-function ensureContains(filePath: string, pattern: RegExp, label: string) {
+// Drift checks
+function ensureContains(filePath: string, pattern: RegExp, label: string): void {
   const fullPath = path.join(process.cwd(), filePath);
-  if (!fs.existsSync(fullPath)) return;
+  if (!fs.existsSync(fullPath)) {
+    if (isStrict) {
+      console.error(`Missing doc file for drift check: ${fullPath}`);
+      hasErrors = true;
+    }
+    return;
+  }
   const content = fs.readFileSync(fullPath, 'utf-8');
   if (!pattern.test(content)) {
     console.error(`${filePath}: missing expected pattern for ${label}: ${pattern}`);
@@ -113,22 +135,22 @@ function ensureContains(filePath: string, pattern: RegExp, label: string) {
   }
 }
 
-if (combatRulesData.hit_chance?.base !== 0.7) {
-    console.error(`public/data/combat_rules.json: expected hit_chance.base == 0.7, got ${combatRulesData.hit_chance?.base}`);
-    hasErrors = true;
+if (combatRulesData?.hit_chance?.base !== 0.7) {
+  console.error(`${dataRoot}/combat_rules.json: expected hit_chance.base == 0.7, got ${combatRulesData?.hit_chance?.base}`);
+  hasErrors = true;
 }
-ensureContains('COMBAT_RULES.md', /\|\s*`base`\s*\|\s*0\.7\s*\|/, "combat rules base hit value");
+ensureContains('COMBAT_RULES.md', /\|\s*`base`\s*\|\s*0\.7\s*\|/, 'combat rules base hit value');
 
 for (const spell of spellsData) {
-    if (spell.fizzle && spell.fizzle.magery_factor !== undefined && spell.fizzle.magery_factor !== 0.002) {
-        console.error(`public/data/spells.json: spell '${spell.id}' has magery_factor ${spell.fizzle.magery_factor}, expected 0.002`);
-        hasErrors = true;
-    }
+  if (spell.fizzle && spell.fizzle.magery_factor !== undefined && spell.fizzle.magery_factor !== 0.002) {
+    console.error(`${dataRoot}/spells.json: spell '${spell.id}' has magery_factor ${spell.fizzle.magery_factor}, expected 0.002`);
+    hasErrors = true;
+  }
 }
-ensureContains('MAGIC_SYSTEM.md', /"magery_factor"\s*:\s*0\.002/, "magery factor");
+ensureContains('MAGIC_SYSTEM.md', /"magery_factor"\s*:\s*0\.002/, 'magery factor');
 
 if (hasErrors) {
   process.exit(1);
 }
 
-console.log("[OK] Content validation passed (schema + cross-ref + drift).");
+console.log('[OK] Content validation passed (schema + cross-ref + drift).');

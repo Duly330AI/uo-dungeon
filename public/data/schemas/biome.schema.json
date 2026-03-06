@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "display_name",
+    "tileset"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "tileset": {
+      "type": "string"
+    },
+    "factions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reagents_bias": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "loot_tables": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ambient": {
+      "type": "object"
+    }
+  }
+}

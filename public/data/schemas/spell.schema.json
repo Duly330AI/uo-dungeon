@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "name",
+    "school",
+    "circle",
+    "cost"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "school": {
+      "type": "string",
+      "enum": [
+        "fire",
+        "cold",
+        "toxic",
+        "energy",
+        "earth",
+        "arcanum"
+      ]
+    },
+    "circle": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 8
+    },
+    "cost": {
+      "type": "object",
+      "required": [
+        "mana"
+      ],
+      "properties": {
+        "mana": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reagents": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "cast_rounds": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "range_tiles": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "effects": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "fizzle": {
+      "type": "object",
+      "properties": {
+        "base": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "magery_factor": {
+          "type": "number"
+        }
+      }
+    },
+    "resist_check": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "scale": {
+          "type": "number"
+        }
+      }
+    },
+    "ai_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
