@@ -1,0 +1,22 @@
+{
+  "skill": {
+    "increment": 0.1,
+    "base": 0.25,
+    "min_gain": 0.01,
+    "max_gain": 0.20,
+    "sweet_spot_center": 0.5,
+    "slowdown_mode": "quadratic"
+  },
+  "stats": {
+    "str_daily_cap": 2.0,
+    "dex_daily_cap": 2.0,
+    "int_daily_cap": 2.0,
+    "stam_daily_cap": 2.0,
+    "gain_on_skill_gain": 0.15
+  },
+  "caps": {
+    "per_skill": 100.0,
+    "total_skills": 700.0,
+    "per_stat": 100.0
+  }
+}

@@ -1,0 +1,296 @@
+[
+  {
+    "id": "goblin",
+    "hp": 10,
+    "speed": 1.2,
+    "ai": "melee",
+    "loot_table": "goblins_common"
+  },
+  {
+    "id": "skeleton",
+    "hp": 20,
+    "speed": 1.0,
+    "ai": "melee",
+    "loot_table": "skeleton_common"
+  },
+  {
+    "id": "zombie",
+    "hp": 30,
+    "speed": 0.8,
+    "ai": "melee",
+    "loot_table": "skeleton_common"
+  },
+  {
+    "id": "headless_one",
+    "hp": 18,
+    "speed": 1.1,
+    "ai": "melee",
+    "loot_table": "skeleton_common"
+  },
+  {
+    "id": "wraith",
+    "hp": 55,
+    "speed": 1.0,
+    "ai": "caster",
+    "loot_table": "undead_mage"
+  },
+  {
+    "id": "spectre",
+    "hp": 50,
+    "speed": 1.0,
+    "ai": "caster",
+    "loot_table": "undead_mage"
+  },
+  {
+    "id": "lich",
+    "hp": 100,
+    "speed": 0.9,
+    "ai": "caster",
+    "loot_table": "lich"
+  },
+  {
+    "id": "lich_lord",
+    "hp": 160,
+    "speed": 0.9,
+    "ai": "caster",
+    "loot_table": "lich_lord"
+  },
+  {
+    "id": "mongbat",
+    "hp": 6,
+    "speed": 1.6,
+    "ai": "melee",
+    "loot_table": "vermin_minor"
+  },
+  {
+    "id": "giant_rat",
+    "hp": 5,
+    "speed": 1.4,
+    "ai": "melee",
+    "loot_table": "vermin_minor"
+  },
+  {
+    "id": "giant_spider",
+    "hp": 35,
+    "speed": 1.1,
+    "ai": "melee",
+    "loot_table": "arachnid"
+  },
+  {
+    "id": "scorpion",
+    "hp": 30,
+    "speed": 1.2,
+    "ai": "melee",
+    "loot_table": "arachnid"
+  },
+  {
+    "id": "harpy",
+    "hp": 28,
+    "speed": 1.2,
+    "ai": "melee",
+    "loot_table": "harpy_common"
+  },
+  {
+    "id": "giant_serpent",
+    "hp": 65,
+    "speed": 1.0,
+    "ai": "melee",
+    "loot_table": "serpent_common"
+  },
+  {
+    "id": "orc",
+    "hp": 20,
+    "speed": 1.1,
+    "ai": "melee",
+    "loot_table": "orc_common"
+  },
+  {
+    "id": "orc_mage",
+    "hp": 22,
+    "speed": 1.0,
+    "ai": "caster",
+    "loot_table": "orc_mage"
+  },
+  {
+    "id": "orc_lord",
+    "hp": 45,
+    "speed": 1.0,
+    "ai": "melee",
+    "loot_table": "orc_lord"
+  },
+  {
+    "id": "ratman",
+    "hp": 18,
+    "speed": 1.1,
+    "ai": "melee",
+    "loot_table": "ratman_common"
+  },
+  {
+    "id": "ratman_archer",
+    "hp": 20,
+    "speed": 1.1,
+    "ai": "ranged",
+    "loot_table": "ratman_archer"
+  },
+  {
+    "id": "ratman_mage",
+    "hp": 22,
+    "speed": 1.0,
+    "ai": "caster",
+    "loot_table": "ratman_mage"
+  },
+  {
+    "id": "lizardman",
+    "hp": 22,
+    "speed": 1.1,
+    "ai": "melee",
+    "loot_table": "lizardman_common"
+  },
+  {
+    "id": "gargoyle",
+    "hp": 55,
+    "speed": 1.1,
+    "ai": "ranged",
+    "loot_table": "gargoyle_common"
+  },
+  {
+    "id": "stone_gargoyle",
+    "hp": 70,
+    "speed": 0.9,
+    "ai": "ranged",
+    "loot_table": "stone_gargoyle"
+  },
+  {
+    "id": "troll",
+    "hp": 55,
+    "speed": 1.0,
+    "ai": "melee",
+    "loot_table": "brute_common"
+  },
+  {
+    "id": "ogre",
+    "hp": 80,
+    "speed": 0.8,
+    "ai": "melee",
+    "loot_table": "brute_common"
+  },
+  {
+    "id": "ogre_lord",
+    "hp": 120,
+    "speed": 0.8,
+    "ai": "melee",
+    "loot_table": "ogre_lord"
+  },
+  {
+    "id": "ettin",
+    "hp": 65,
+    "speed": 0.8,
+    "ai": "melee",
+    "loot_table": "brute_common"
+  },
+  {
+    "id": "cyclops",
+    "hp": 140,
+    "speed": 0.9,
+    "ai": "melee",
+    "loot_table": "cyclops_elite"
+  },
+  {
+    "id": "titan",
+    "hp": 180,
+    "speed": 0.9,
+    "ai": "caster",
+    "loot_table": "titan_elite"
+  },
+  {
+    "id": "gazer",
+    "hp": 45,
+    "speed": 0.9,
+    "ai": "caster",
+    "loot_table": "gazer_common"
+  },
+  {
+    "id": "elder_gazer",
+    "hp": 90,
+    "speed": 0.9,
+    "ai": "caster",
+    "loot_table": "elder_gazer"
+  },
+  {
+    "id": "earth_elemental",
+    "hp": 75,
+    "speed": 0.9,
+    "ai": "melee",
+    "loot_table": "elemental_earth"
+  },
+  {
+    "id": "fire_elemental",
+    "hp": 85,
+    "speed": 1.0,
+    "ai": "caster",
+    "loot_table": "elemental_fire"
+  },
+  {
+    "id": "air_elemental",
+    "hp": 70,
+    "speed": 1.2,
+    "ai": "caster",
+    "loot_table": "elemental_air"
+  },
+  {
+    "id": "water_elemental",
+    "hp": 80,
+    "speed": 1.0,
+    "ai": "melee",
+    "loot_table": "elemental_water"
+  },
+  {
+    "id": "reaper",
+    "hp": 90,
+    "speed": 0.0,
+    "ai": "caster",
+    "loot_table": "reaper_node"
+  },
+  {
+    "id": "daemon",
+    "hp": 150,
+    "speed": 0.9,
+    "ai": "caster",
+    "loot_table": "daemon_elite"
+  },
+  {
+    "id": "balron",
+    "hp": 240,
+    "speed": 0.85,
+    "ai": "caster",
+    "loot_table": "balron_boss"
+  },
+  {
+    "id": "drake",
+    "hp": 110,
+    "speed": 0.9,
+    "ai": "caster",
+    "loot_table": "drake_common"
+  },
+  {
+    "id": "wyvern",
+    "hp": 110,
+    "speed": 1.1,
+    "ai": "melee",
+    "loot_table": "wyvern_common"
+  },
+  {
+    "id": "dragon",
+    "hp": 200,
+    "speed": 0.8,
+    "ai": "caster",
+    "loot_table": "dragon_boss"
+  },
+  {
+    "id": "ancient_wyrm",
+    "hp": 260,
+    "speed": 0.75,
+    "ai": "caster",
+    "loot_table": "ancient_wyrm_mythic"
+  }
+]

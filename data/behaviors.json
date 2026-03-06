@@ -1,0 +1,43 @@
+{
+  "melee": {
+    "engage_range": 1,
+    "base_delay_class": "medium",
+    "prefer_guard_caster": true,
+    "flee_hp_pct": 0.1
+  },
+  "ranged": {
+    "engage_range": 6,
+    "base_delay_class": "light",
+    "kite_min": 3,
+    "kite_max": 5,
+    "flee_hp_pct": 0.15
+  },
+  "caster": {
+    "engage_range": 5,
+    "base_delay_class": "medium",
+    "use_debuff_first": true,
+    "flee_hp_pct": 0.2
+  },
+  "guardian": {
+    "engage_range": 1,
+    "base_delay_class": "heavy",
+    "body_block": true,
+    "taunt": true
+  },
+  "brute": {
+    "engage_range": 1,
+    "base_delay_class": "heavy",
+    "berserk_at_hp_pct": 0.25
+  },
+  "scout": {
+    "engage_range": 1,
+    "base_delay_class": "light",
+    "call_for_help": true,
+    "avoid_stronger": true
+  },
+  "boss": {
+    "engage_range": 1,
+    "base_delay_class": "heavy",
+    "phase_logic": true
+  }
+}

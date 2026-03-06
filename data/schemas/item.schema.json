@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "type",
+    "base_value"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "weapon",
+        "armor",
+        "shield",
+        "ammo",
+        "reagent",
+        "consumable",
+        "material",
+        "tool",
+        "currency",
+        "misc"
+      ]
+    },
+    "base_value": {
+      "type": "number",
+      "minimum": 0
+    },
+    "rarity": {
+      "enum": [
+        "common",
+        "uncommon",
+        "rare",
+        "epic",
+        "legendary"
+      ]
+    },
+    "weight": {
+      "type": "number",
+      "minimum": 0
+    }
+  }
+}

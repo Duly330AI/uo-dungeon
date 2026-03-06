@@ -1,0 +1,14 @@
+{
+  "threat": "map<entityId, number>",
+  "focusTarget": "entityId|null",
+  "allyInNeed": "entityId|null",
+  "lastHurtBy": "entityId|null",
+  "ammo": "number",
+  "mana": "number",
+  "recovery": "number",
+  "position": "tile",
+  "los": "map<entityId, bool>",
+  "coverScore": "number",
+  "incomingThreat": "number",
+  "phase": "number|undefined"
+}
