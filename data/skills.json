@@ -1,0 +1,218 @@
+[
+  {
+    "id": "swords",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Swords"
+  },
+  {
+    "id": "archery",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Archery"
+  },
+  {
+    "id": "magery",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Magery"
+  },
+  {
+    "id": "meditation",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Meditation"
+  },
+  {
+    "id": "fencing",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Fencing"
+  },
+  {
+    "id": "macefighting",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Macefighting"
+  },
+  {
+    "id": "wrestling",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Wrestling"
+  },
+  {
+    "id": "tactics",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Tactics"
+  },
+  {
+    "id": "anatomy",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Anatomy"
+  },
+  {
+    "id": "parrying",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Parrying"
+  },
+  {
+    "id": "healing",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Healing"
+  },
+  {
+    "id": "resist_spells",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Resist Spells"
+  },
+  {
+    "id": "evaluate_intelligence",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Evaluate Intelligence"
+  },
+  {
+    "id": "necromancy",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Necromancy"
+  },
+  {
+    "id": "spirit_speak",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Spirit Speak"
+  },
+  {
+    "id": "chivalry",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Chivalry"
+  },
+  {
+    "id": "poisoning",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Poisoning"
+  },
+  {
+    "id": "hiding",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Hiding"
+  },
+  {
+    "id": "stealth",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Stealth"
+  },
+  {
+    "id": "stealing",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Stealing"
+  },
+  {
+    "id": "lockpicking",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Lockpicking"
+  },
+  {
+    "id": "detect_hidden",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Detect Hidden"
+  },
+  {
+    "id": "tracking",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Tracking"
+  },
+  {
+    "id": "animal_taming",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Animal Taming"
+  },
+  {
+    "id": "animal_lore",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Animal Lore"
+  },
+  {
+    "id": "veterinary",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Veterinary"
+  },
+  {
+    "id": "mining",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Mining"
+  },
+  {
+    "id": "lumberjacking",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Lumberjacking"
+  },
+  {
+    "id": "blacksmithy",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Blacksmithy"
+  },
+  {
+    "id": "carpentry",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Carpentry"
+  },
+  {
+    "id": "bowcraft_fletching",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Bowcraft Fletching"
+  },
+  {
+    "id": "tailoring",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Tailoring"
+  },
+  {
+    "id": "tinkering",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Tinkering"
+  },
+  {
+    "id": "alchemy",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Alchemy"
+  },
+  {
+    "id": "cooking",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Cooking"
+  },
+  {
+    "id": "fishing",
+    "cap": 100,
+    "xp_curve": "linear",
+    "display_name": "Fishing"
+  }
+]

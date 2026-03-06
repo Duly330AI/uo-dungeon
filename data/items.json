@@ -1,0 +1,1083 @@
+[
+  {
+    "id": "iron_ore",
+    "name": "Iron Ore",
+    "type": "material",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 2
+  },
+  {
+    "id": "wood_log",
+    "name": "Wood Log",
+    "type": "material",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 2
+  },
+  {
+    "id": "short_sword",
+    "name": "Short Sword",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 6,
+    "rarity": "common",
+    "handed": 1,
+    "dmg_type": "slash",
+    "base_value": 15
+  },
+  {
+    "id": "dull_copper_ore",
+    "name": "Dull Copper Ore",
+    "type": "material",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 12
+  },
+  {
+    "id": "shadow_iron_ore",
+    "name": "Shadow Iron Ore",
+    "type": "material",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 12
+  },
+  {
+    "id": "copper_ore",
+    "name": "Copper Ore",
+    "type": "material",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 12
+  },
+  {
+    "id": "bronze_ore",
+    "name": "Bronze Ore",
+    "type": "material",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 12
+  },
+  {
+    "id": "gold_ore",
+    "name": "Gold Ore",
+    "type": "material",
+    "stack": 99,
+    "rarity": "rare",
+    "base_value": 50
+  },
+  {
+    "id": "agapite_ore",
+    "name": "Agapite Ore",
+    "type": "material",
+    "stack": 99,
+    "rarity": "rare",
+    "base_value": 50
+  },
+  {
+    "id": "verite_ore",
+    "name": "Verite Ore",
+    "type": "material",
+    "stack": 99,
+    "rarity": "rare",
+    "base_value": 50
+  },
+  {
+    "id": "valorite_ore",
+    "name": "Valorite Ore",
+    "type": "material",
+    "stack": 99,
+    "rarity": "epic",
+    "base_value": 250
+  },
+  {
+    "id": "iron_ingot",
+    "name": "Iron Ingot",
+    "type": "material",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 2
+  },
+  {
+    "id": "dull_copper_ingot",
+    "name": "Dull Copper Ingot",
+    "type": "material",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 12
+  },
+  {
+    "id": "shadow_iron_ingot",
+    "name": "Shadow Iron Ingot",
+    "type": "material",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 12
+  },
+  {
+    "id": "copper_ingot",
+    "name": "Copper Ingot",
+    "type": "material",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 12
+  },
+  {
+    "id": "bronze_ingot",
+    "name": "Bronze Ingot",
+    "type": "material",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 12
+  },
+  {
+    "id": "gold_ingot",
+    "name": "Gold Ingot",
+    "type": "material",
+    "stack": 99,
+    "rarity": "rare",
+    "base_value": 50
+  },
+  {
+    "id": "agapite_ingot",
+    "name": "Agapite Ingot",
+    "type": "material",
+    "stack": 99,
+    "rarity": "rare",
+    "base_value": 50
+  },
+  {
+    "id": "verite_ingot",
+    "name": "Verite Ingot",
+    "type": "material",
+    "stack": 99,
+    "rarity": "rare",
+    "base_value": 50
+  },
+  {
+    "id": "valorite_ingot",
+    "name": "Valorite Ingot",
+    "type": "material",
+    "stack": 99,
+    "rarity": "epic",
+    "base_value": 250
+  },
+  {
+    "id": "oak_log",
+    "name": "Oak Log",
+    "type": "material",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 12
+  },
+  {
+    "id": "ash_log",
+    "name": "Ash Log",
+    "type": "material",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 12
+  },
+  {
+    "id": "yew_log",
+    "name": "Yew Log",
+    "type": "material",
+    "stack": 99,
+    "rarity": "rare",
+    "base_value": 50
+  },
+  {
+    "id": "heartwood_log",
+    "name": "Heartwood Log",
+    "type": "material",
+    "stack": 99,
+    "rarity": "rare",
+    "base_value": 50
+  },
+  {
+    "id": "bloodwood_log",
+    "name": "Bloodwood Log",
+    "type": "material",
+    "stack": 99,
+    "rarity": "epic",
+    "base_value": 250
+  },
+  {
+    "id": "frostwood_log",
+    "name": "Frostwood Log",
+    "type": "material",
+    "stack": 99,
+    "rarity": "epic",
+    "base_value": 250
+  },
+  {
+    "id": "wood_board",
+    "name": "Board",
+    "type": "material",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 2
+  },
+  {
+    "id": "oak_board",
+    "name": "Oak Board",
+    "type": "material",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 12
+  },
+  {
+    "id": "ash_board",
+    "name": "Ash Board",
+    "type": "material",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 12
+  },
+  {
+    "id": "yew_board",
+    "name": "Yew Board",
+    "type": "material",
+    "stack": 99,
+    "rarity": "rare",
+    "base_value": 50
+  },
+  {
+    "id": "leather",
+    "name": "Leather",
+    "type": "material",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 2
+  },
+  {
+    "id": "spined_leather",
+    "name": "Spined Leather",
+    "type": "material",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 12
+  },
+  {
+    "id": "horned_leather",
+    "name": "Horned Leather",
+    "type": "material",
+    "stack": 99,
+    "rarity": "rare",
+    "base_value": 50
+  },
+  {
+    "id": "barbed_leather",
+    "name": "Barbed Leather",
+    "type": "material",
+    "stack": 99,
+    "rarity": "epic",
+    "base_value": 250
+  },
+  {
+    "id": "reagent_black_pearl",
+    "name": "Black Pearl",
+    "type": "reagent",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 5
+  },
+  {
+    "id": "reagent_nightshade",
+    "name": "Nightshade",
+    "type": "reagent",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 5
+  },
+  {
+    "id": "reagent_spiders_silk",
+    "name": "Spider's Silk",
+    "type": "reagent",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 5
+  },
+  {
+    "id": "reagent_bloodmoss",
+    "name": "Blood Moss",
+    "type": "reagent",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 5
+  },
+  {
+    "id": "reagent_mandrake_root",
+    "name": "Mandrake Root",
+    "type": "reagent",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 25
+  },
+  {
+    "id": "reagent_garlic",
+    "name": "Garlic",
+    "type": "reagent",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 5
+  },
+  {
+    "id": "reagent_ginseng",
+    "name": "Ginseng",
+    "type": "reagent",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 5
+  },
+  {
+    "id": "reagent_sulfurous_ash",
+    "name": "Sulfurous Ash",
+    "type": "reagent",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 5
+  },
+  {
+    "id": "reagent_bat_wing",
+    "name": "Bat Wing",
+    "type": "reagent",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 25
+  },
+  {
+    "id": "reagent_grave_dust",
+    "name": "Grave Dust",
+    "type": "reagent",
+    "stack": 99,
+    "rarity": "uncommon",
+    "base_value": 25
+  },
+  {
+    "id": "reagent_daemon_blood",
+    "name": "Daemon Blood",
+    "type": "reagent",
+    "stack": 99,
+    "rarity": "rare",
+    "base_value": 100
+  },
+  {
+    "id": "bread_loaf",
+    "name": "Bread Loaf",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "common",
+    "hunger_restore": 12,
+    "base_value": 7
+  },
+  {
+    "id": "cheese_wedge",
+    "name": "Cheese Wedge",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "common",
+    "hunger_restore": 10,
+    "base_value": 7
+  },
+  {
+    "id": "fish_steak_raw",
+    "name": "Raw Fish Steak",
+    "type": "material",
+    "stack": 20,
+    "rarity": "common",
+    "base_value": 2
+  },
+  {
+    "id": "fish_steak",
+    "name": "Cooked Fish Steak",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "common",
+    "hunger_restore": 16,
+    "base_value": 7
+  },
+  {
+    "id": "cooked_ribs",
+    "name": "Cooked Ribs",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "common",
+    "hunger_restore": 18,
+    "base_value": 7
+  },
+  {
+    "id": "cooked_bird",
+    "name": "Roasted Bird",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "common",
+    "hunger_restore": 18,
+    "base_value": 7
+  },
+  {
+    "id": "apple",
+    "name": "Apple",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "common",
+    "hunger_restore": 6,
+    "base_value": 7
+  },
+  {
+    "id": "grapes",
+    "name": "Grapes",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "common",
+    "hunger_restore": 6,
+    "base_value": 7
+  },
+  {
+    "id": "sausage",
+    "name": "Sausage",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "common",
+    "hunger_restore": 12,
+    "base_value": 7
+  },
+  {
+    "id": "water_flask",
+    "name": "Water Flask",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "common",
+    "thirst_restore": 15,
+    "base_value": 7
+  },
+  {
+    "id": "ale_mug",
+    "name": "Mug of Ale",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "common",
+    "thirst_restore": 12,
+    "base_value": 7
+  },
+  {
+    "id": "wine_bottle",
+    "name": "Bottle of Wine",
+    "type": "consumable",
+    "stack": 10,
+    "rarity": "uncommon",
+    "thirst_restore": 18,
+    "base_value": 37
+  },
+  {
+    "id": "cider_mug",
+    "name": "Mug of Cider",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "common",
+    "thirst_restore": 14,
+    "base_value": 7
+  },
+  {
+    "id": "mead_mug",
+    "name": "Mug of Mead",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "uncommon",
+    "thirst_restore": 16,
+    "base_value": 37
+  },
+  {
+    "id": "arrow",
+    "name": "Arrow",
+    "type": "ammo",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 1
+  },
+  {
+    "id": "bolt",
+    "name": "Bolt",
+    "type": "ammo",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 1
+  },
+  {
+    "id": "quarterstaff",
+    "name": "Quarterstaff",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 8,
+    "rarity": "common",
+    "handed": 2,
+    "dmg_type": "blunt",
+    "base_value": 15
+  },
+  {
+    "id": "gnarled_staff",
+    "name": "Gnarled Staff",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 7,
+    "rarity": "common",
+    "handed": 2,
+    "dmg_type": "blunt",
+    "base_value": 15
+  },
+  {
+    "id": "black_staff",
+    "name": "Black Staff",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 9,
+    "rarity": "uncommon",
+    "handed": 2,
+    "dmg_type": "blunt",
+    "base_value": 75
+  },
+  {
+    "id": "dagger",
+    "name": "Dagger",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 5,
+    "rarity": "common",
+    "handed": 1,
+    "dmg_type": "pierce",
+    "base_value": 15
+  },
+  {
+    "id": "long_sword",
+    "name": "Longsword",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 8,
+    "rarity": "common",
+    "handed": 1,
+    "dmg_type": "slash",
+    "base_value": 15
+  },
+  {
+    "id": "broadsword",
+    "name": "Broadsword",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 9,
+    "rarity": "uncommon",
+    "handed": 1,
+    "dmg_type": "slash",
+    "base_value": 75
+  },
+  {
+    "id": "scimitar",
+    "name": "Scimitar",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 7,
+    "rarity": "common",
+    "handed": 1,
+    "dmg_type": "slash",
+    "base_value": 15
+  },
+  {
+    "id": "cutlass",
+    "name": "Cutlass",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 7,
+    "rarity": "common",
+    "handed": 1,
+    "dmg_type": "slash",
+    "base_value": 15
+  },
+  {
+    "id": "katana",
+    "name": "Katana",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 7,
+    "rarity": "uncommon",
+    "handed": 1,
+    "dmg_type": "slash",
+    "base_value": 75
+  },
+  {
+    "id": "kryss",
+    "name": "Kryss",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 7,
+    "rarity": "uncommon",
+    "handed": 1,
+    "dmg_type": "pierce",
+    "base_value": 75
+  },
+  {
+    "id": "war_mace",
+    "name": "War Mace",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 9,
+    "rarity": "uncommon",
+    "handed": 1,
+    "dmg_type": "blunt",
+    "base_value": 75
+  },
+  {
+    "id": "mace",
+    "name": "Mace",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 7,
+    "rarity": "common",
+    "handed": 1,
+    "dmg_type": "blunt",
+    "base_value": 15
+  },
+  {
+    "id": "hammer_pick",
+    "name": "Hammer Pick",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 10,
+    "rarity": "uncommon",
+    "handed": 1,
+    "dmg_type": "blunt",
+    "base_value": 75
+  },
+  {
+    "id": "war_axe",
+    "name": "War Axe",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 8,
+    "rarity": "uncommon",
+    "handed": 1,
+    "dmg_type": "slash",
+    "base_value": 75
+  },
+  {
+    "id": "short_spear",
+    "name": "Short Spear",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 8,
+    "rarity": "common",
+    "handed": 1,
+    "dmg_type": "pierce",
+    "base_value": 15
+  },
+  {
+    "id": "two_handed_sword",
+    "name": "Two-Handed Sword",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 13,
+    "rarity": "uncommon",
+    "handed": 2,
+    "dmg_type": "slash",
+    "base_value": 75
+  },
+  {
+    "id": "bardiche",
+    "name": "Bardiche",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 12,
+    "rarity": "uncommon",
+    "handed": 2,
+    "dmg_type": "slash",
+    "base_value": 75
+  },
+  {
+    "id": "halberd",
+    "name": "Halberd",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 13,
+    "rarity": "rare",
+    "handed": 2,
+    "dmg_type": "slash",
+    "base_value": 300
+  },
+  {
+    "id": "battle_axe",
+    "name": "Battle Axe",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 11,
+    "rarity": "common",
+    "handed": 2,
+    "dmg_type": "slash",
+    "base_value": 15
+  },
+  {
+    "id": "double_axe",
+    "name": "Double Axe",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 12,
+    "rarity": "uncommon",
+    "handed": 2,
+    "dmg_type": "slash",
+    "base_value": 75
+  },
+  {
+    "id": "pike",
+    "name": "Pike",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 11,
+    "rarity": "uncommon",
+    "handed": 2,
+    "dmg_type": "pierce",
+    "base_value": 75
+  },
+  {
+    "id": "spear",
+    "name": "Spear",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 9,
+    "rarity": "common",
+    "handed": 2,
+    "dmg_type": "pierce",
+    "base_value": 15
+  },
+  {
+    "id": "maul",
+    "name": "Maul",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 11,
+    "rarity": "common",
+    "handed": 2,
+    "dmg_type": "blunt",
+    "base_value": 15
+  },
+  {
+    "id": "short_bow",
+    "name": "Short Bow",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 8,
+    "rarity": "common",
+    "handed": 2,
+    "dmg_type": "pierce",
+    "ammo_type": "arrow",
+    "base_value": 15
+  },
+  {
+    "id": "long_bow",
+    "name": "Long Bow",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 10,
+    "rarity": "uncommon",
+    "handed": 2,
+    "dmg_type": "pierce",
+    "ammo_type": "arrow",
+    "base_value": 75
+  },
+  {
+    "id": "composite_bow",
+    "name": "Composite Bow",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 11,
+    "rarity": "rare",
+    "handed": 2,
+    "dmg_type": "pierce",
+    "ammo_type": "arrow",
+    "base_value": 300
+  },
+  {
+    "id": "yumi",
+    "name": "Yumi",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 12,
+    "rarity": "rare",
+    "handed": 2,
+    "dmg_type": "pierce",
+    "ammo_type": "arrow",
+    "base_value": 300
+  },
+  {
+    "id": "crossbow",
+    "name": "Crossbow",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 12,
+    "rarity": "uncommon",
+    "handed": 2,
+    "dmg_type": "pierce",
+    "ammo_type": "bolt",
+    "base_value": 75
+  },
+  {
+    "id": "heavy_crossbow",
+    "name": "Heavy Crossbow",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 14,
+    "rarity": "rare",
+    "handed": 2,
+    "dmg_type": "pierce",
+    "ammo_type": "bolt",
+    "base_value": 300
+  },
+  {
+    "id": "repeating_crossbow",
+    "name": "Repeating Crossbow",
+    "type": "weapon",
+    "stack": 1,
+    "dmg": 10,
+    "rarity": "rare",
+    "handed": 2,
+    "dmg_type": "pierce",
+    "ammo_type": "bolt",
+    "base_value": 300
+  },
+  {
+    "id": "buckler",
+    "name": "Buckler",
+    "type": "shield",
+    "stack": 1,
+    "rarity": "common",
+    "base_value": 10
+  },
+  {
+    "id": "wooden_shield",
+    "name": "Wooden Shield",
+    "type": "shield",
+    "stack": 1,
+    "rarity": "common",
+    "base_value": 10
+  },
+  {
+    "id": "kite_shield",
+    "name": "Kite Shield",
+    "type": "shield",
+    "stack": 1,
+    "rarity": "uncommon",
+    "base_value": 50
+  },
+  {
+    "id": "heater_shield",
+    "name": "Heater Shield",
+    "type": "shield",
+    "stack": 1,
+    "rarity": "rare",
+    "base_value": 200
+  },
+  {
+    "id": "pickaxe",
+    "name": "Pickaxe",
+    "type": "tool",
+    "stack": 1,
+    "rarity": "common",
+    "base_value": 6
+  },
+  {
+    "id": "shovel",
+    "name": "Shovel",
+    "type": "tool",
+    "stack": 1,
+    "rarity": "common",
+    "base_value": 6
+  },
+  {
+    "id": "smith_hammer",
+    "name": "Smith's Hammer",
+    "type": "tool",
+    "stack": 1,
+    "rarity": "common",
+    "base_value": 6
+  },
+  {
+    "id": "tongs",
+    "name": "Tongs",
+    "type": "tool",
+    "stack": 1,
+    "rarity": "common",
+    "base_value": 6
+  },
+  {
+    "id": "fletching_kit",
+    "name": "Fletching Kit",
+    "type": "tool",
+    "stack": 1,
+    "rarity": "common",
+    "base_value": 6
+  },
+  {
+    "id": "sewing_kit",
+    "name": "Sewing Kit",
+    "type": "tool",
+    "stack": 1,
+    "rarity": "common",
+    "base_value": 6
+  },
+  {
+    "id": "mortar_pestle",
+    "name": "Mortar & Pestle",
+    "type": "tool",
+    "stack": 1,
+    "rarity": "common",
+    "base_value": 6
+  },
+  {
+    "id": "hatchet",
+    "name": "Hatchet",
+    "type": "tool",
+    "stack": 1,
+    "rarity": "common",
+    "base_value": 6
+  },
+  {
+    "id": "saw",
+    "name": "Saw",
+    "type": "tool",
+    "stack": 1,
+    "rarity": "common",
+    "base_value": 6
+  },
+  {
+    "id": "bowstring",
+    "name": "Bowstring",
+    "type": "material",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 2
+  },
+  {
+    "id": "arrow_shaft",
+    "name": "Arrow Shaft",
+    "type": "material",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 2
+  },
+  {
+    "id": "cloth_bolt",
+    "name": "Bolt of Cloth",
+    "type": "material",
+    "stack": 20,
+    "rarity": "common",
+    "base_value": 2
+  },
+  {
+    "id": "thread_spool",
+    "name": "Spool of Thread",
+    "type": "material",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 2
+  },
+  {
+    "id": "bandage",
+    "name": "Bandage",
+    "type": "consumable",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 7
+  },
+  {
+    "id": "feather",
+    "name": "Feather",
+    "type": "material",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 2
+  },
+  {
+    "id": "bone",
+    "name": "Bone",
+    "type": "material",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 2
+  },
+  {
+    "id": "venom_sac",
+    "name": "Venom Sac",
+    "type": "material",
+    "stack": 20,
+    "rarity": "uncommon",
+    "base_value": 12
+  },
+  {
+    "id": "meat_raw",
+    "name": "Raw Meat",
+    "type": "material",
+    "stack": 20,
+    "rarity": "common",
+    "base_value": 2
+  },
+  {
+    "id": "leather_strip",
+    "name": "Leather Strip",
+    "type": "material",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 2
+  },
+  {
+    "id": "gem",
+    "name": "Gem",
+    "type": "material",
+    "stack": 20,
+    "rarity": "uncommon",
+    "base_value": 12
+  },
+  {
+    "id": "iron_nails",
+    "name": "Iron Nails",
+    "type": "material",
+    "stack": 99,
+    "rarity": "common",
+    "base_value": 2
+  },
+  {
+    "id": "heal_potion",
+    "name": "Heal Potion",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "common",
+    "base_value": 7
+  },
+  {
+    "id": "greater_heal_potion",
+    "name": "Greater Heal Potion",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "uncommon",
+    "base_value": 37
+  },
+  {
+    "id": "cure_potion",
+    "name": "Cure Potion",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "common",
+    "base_value": 7
+  },
+  {
+    "id": "strength_potion",
+    "name": "Strength Potion",
+    "type": "consumable",
+    "stack": 20,
+    "rarity": "uncommon",
+    "base_value": 37
+  },
+  {
+    "id": "gold_coin",
+    "name": "Gold Coin",
+    "type": "currency",
+    "stack": 9999,
+    "rarity": "common",
+    "base_value": 5
+  }
+]

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "title_key",
+    "objectives"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "title_key": {
+      "type": "string"
+    },
+    "giver_npc_id": {
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "offered",
+        "active",
+        "succeeded",
+        "failed",
+        "cancelled"
+      ]
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "objectives": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "rewards": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "journal": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "hooks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

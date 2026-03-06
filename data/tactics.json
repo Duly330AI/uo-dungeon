@@ -1,0 +1,145 @@
+{
+  "melee": {
+    "actions": {
+      "attack_melee": {
+        "base": 0.7,
+        "dist_pref": {
+          "ideal": 1,
+          "falloff": 0.2
+        }
+      },
+      "guard_ally": {
+        "base": 0.5,
+        "ally_role": "caster",
+        "radius": 6
+      },
+      "move_chase": {
+        "base": 0.4
+      },
+      "dodge": {
+        "base": 0.3,
+        "threat_pct": 0.35
+      },
+      "flee": {
+        "base": 0.1,
+        "hp_threshold": 0.1
+      }
+    }
+  },
+  "ranged": {
+    "actions": {
+      "shoot": {
+        "base": 0.7,
+        "dist_pref": {
+          "ideal": 4,
+          "falloff": 0.1
+        }
+      },
+      "move_kite": {
+        "base": 0.6,
+        "min_dist": 3,
+        "max_dist": 5
+      },
+      "dodge": {
+        "base": 0.3,
+        "threat_pct": 0.3
+      },
+      "flee": {
+        "base": 0.1,
+        "hp_threshold": 0.15
+      },
+      "switch_when_ammo_low": {
+        "base": 0.2,
+        "ammo_low": 3
+      }
+    }
+  },
+  "caster": {
+    "actions": {
+      "cast_debuff": {
+        "base": 0.6,
+        "target_def_high": true
+      },
+      "cast_nuke": {
+        "base": 0.5
+      },
+      "dodge": {
+        "base": 0.3,
+        "threat_pct": 0.25
+      },
+      "flee": {
+        "base": 0.2,
+        "hp_threshold": 0.2
+      }
+    }
+  },
+  "guardian": {
+    "actions": {
+      "guard_ally": {
+        "base": 0.8,
+        "ally_role": "caster",
+        "radius": 6
+      },
+      "body_block": {
+        "base": 0.6
+      },
+      "attack_melee": {
+        "base": 0.4
+      },
+      "taunt": {
+        "base": 0.4
+      }
+    }
+  },
+  "brute": {
+    "actions": {
+      "attack_melee": {
+        "base": 0.8
+      },
+      "smash": {
+        "base": 0.6,
+        "armor_break": true
+      },
+      "throw_rock": {
+        "base": 0.3,
+        "range": 4
+      },
+      "berserk": {
+        "base": 0.5,
+        "hp_threshold": 0.25
+      }
+    }
+  },
+  "scout": {
+    "actions": {
+      "call_for_help": {
+        "base": 0.8,
+        "radius": 10
+      },
+      "move_kite": {
+        "base": 0.6,
+        "min_dist": 4,
+        "max_dist": 6
+      },
+      "attack_melee": {
+        "base": 0.2
+      }
+    }
+  },
+  "boss": {
+    "actions": {
+      "phase_ability": {
+        "base": 0.9
+      },
+      "summon_adds": {
+        "base": 0.6
+      },
+      "attack_melee": {
+        "base": 0.6
+      },
+      "cast_nuke": {
+        "base": 0.6
+      }
+    }
+  }
+}

@@ -1,0 +1,885 @@
+[
+  {
+    "table_id": "goblins_common",
+    "entries": [
+      {
+        "item_id": "wood_log",
+        "weight": 80,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "item_id": "short_sword",
+        "weight": 5,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "item_id": "gold_coin",
+        "weight": 40,
+        "min": 5,
+        "max": 25
+      }
+    ]
+  },
+  {
+    "table_id": "skeleton_common",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 60,
+        "min": 10,
+        "max": 60
+      },
+      {
+        "item_id": "bone",
+        "weight": 30,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "item_id": "arrow",
+        "weight": 10,
+        "min": 5,
+        "max": 15
+      }
+    ]
+  },
+  {
+    "table_id": "undead_mage",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 50,
+        "min": 20,
+        "max": 100
+      },
+      {
+        "item_id": "reagent_nightshade",
+        "weight": 25,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "item_id": "reagent_spider_silk",
+        "weight": 25,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "item_id": "reagent_black_pearl",
+        "weight": 20,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "item_id": "reagent_blood_moss",
+        "weight": 15,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "item_id": "gem",
+        "weight": 5,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "table_id": "lich",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 55,
+        "min": 80,
+        "max": 180
+      },
+      {
+        "item_id": "reagent_black_pearl",
+        "weight": 30,
+        "min": 2,
+        "max": 4
+      },
+      {
+        "item_id": "reagent_nightshade",
+        "weight": 30,
+        "min": 2,
+        "max": 4
+      },
+      {
+        "item_id": "gem",
+        "weight": 15,
+        "min": 1,
+        "max": 2
+      }
+    ]
+  },
+  {
+    "table_id": "lich_lord",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 60,
+        "min": 150,
+        "max": 300
+      },
+      {
+        "item_id": "reagent_mandrake_root",
+        "weight": 35,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "item_id": "reagent_spider_silk",
+        "weight": 35,
+        "min": 2,
+        "max": 6
+      },
+      {
+        "item_id": "reagent_black_pearl",
+        "weight": 25,
+        "min": 2,
+        "max": 4
+      },
+      {
+        "item_id": "reagent_nightshade",
+        "weight": 25,
+        "min": 2,
+        "max": 4
+      },
+      {
+        "item_id": "gem",
+        "weight": 20,
+        "min": 1,
+        "max": 3
+      }
+    ]
+  },
+  {
+    "table_id": "vermin_minor",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 40,
+        "min": 5,
+        "max": 20
+      },
+      {
+        "item_id": "meat_raw",
+        "weight": 50,
+        "min": 1,
+        "max": 2
+      }
+    ]
+  },
+  {
+    "table_id": "arachnid",
+    "entries": [
+      {
+        "item_id": "reagent_spider_silk",
+        "weight": 60,
+        "min": 2,
+        "max": 6
+      },
+      {
+        "item_id": "venom_sac",
+        "weight": 30,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "gold_coin",
+        "weight": 20,
+        "min": 10,
+        "max": 40
+      }
+    ]
+  },
+  {
+    "table_id": "harpy_common",
+    "entries": [
+      {
+        "item_id": "feather",
+        "weight": 70,
+        "min": 10,
+        "max": 40
+      },
+      {
+        "item_id": "gold_coin",
+        "weight": 40,
+        "min": 10,
+        "max": 60
+      },
+      {
+        "item_id": "gem",
+        "weight": 5,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "table_id": "serpent_common",
+    "entries": [
+      {
+        "item_id": "venom_sac",
+        "weight": 40,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "meat_raw",
+        "weight": 30,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "item_id": "gold_coin",
+        "weight": 30,
+        "min": 10,
+        "max": 60
+      }
+    ]
+  },
+  {
+    "table_id": "orc_common",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 60,
+        "min": 20,
+        "max": 90
+      },
+      {
+        "item_id": "arrow",
+        "weight": 30,
+        "min": 5,
+        "max": 20
+      },
+      {
+        "item_id": "short_sword",
+        "weight": 10,
+        "min": 0,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "table_id": "orc_mage",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 40,
+        "min": 30,
+        "max": 120
+      },
+      {
+        "item_id": "reagent_garlic",
+        "weight": 30,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "item_id": "reagent_ginseng",
+        "weight": 30,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "item_id": "gem",
+        "weight": 5,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "table_id": "orc_lord",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 50,
+        "min": 80,
+        "max": 180
+      },
+      {
+        "item_id": "gem",
+        "weight": 20,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "arrow",
+        "weight": 20,
+        "min": 10,
+        "max": 30
+      }
+    ]
+  },
+  {
+    "table_id": "ratman_common",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 60,
+        "min": 15,
+        "max": 70
+      },
+      {
+        "item_id": "meat_raw",
+        "weight": 30,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "arrow",
+        "weight": 20,
+        "min": 5,
+        "max": 15
+      }
+    ]
+  },
+  {
+    "table_id": "ratman_archer",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 50,
+        "min": 15,
+        "max": 80
+      },
+      {
+        "item_id": "arrow",
+        "weight": 50,
+        "min": 10,
+        "max": 35
+      }
+    ]
+  },
+  {
+    "table_id": "ratman_mage",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 40,
+        "min": 30,
+        "max": 110
+      },
+      {
+        "item_id": "reagent_black_pearl",
+        "weight": 25,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "item_id": "reagent_nightshade",
+        "weight": 25,
+        "min": 1,
+        "max": 3
+      }
+    ]
+  },
+  {
+    "table_id": "lizardman_common",
+    "entries": [
+      {
+        "item_id": "leather",
+        "weight": 60,
+        "min": 4,
+        "max": 10
+      },
+      {
+        "item_id": "gold_coin",
+        "weight": 40,
+        "min": 15,
+        "max": 80
+      },
+      {
+        "item_id": "meat_raw",
+        "weight": 30,
+        "min": 1,
+        "max": 3
+      }
+    ]
+  },
+  {
+    "table_id": "gargoyle_common",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 60,
+        "min": 60,
+        "max": 140
+      },
+      {
+        "item_id": "gem",
+        "weight": 30,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "iron_ore",
+        "weight": 10,
+        "min": 2,
+        "max": 6
+      }
+    ]
+  },
+  {
+    "table_id": "stone_gargoyle",
+    "entries": [
+      {
+        "item_id": "iron_ore",
+        "weight": 50,
+        "min": 8,
+        "max": 20
+      },
+      {
+        "item_id": "gold_coin",
+        "weight": 40,
+        "min": 60,
+        "max": 140
+      },
+      {
+        "item_id": "gem",
+        "weight": 15,
+        "min": 1,
+        "max": 2
+      }
+    ]
+  },
+  {
+    "table_id": "brute_common",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 60,
+        "min": 60,
+        "max": 160
+      },
+      {
+        "item_id": "club",
+        "weight": 10,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "item_id": "gem",
+        "weight": 20,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "meat_raw",
+        "weight": 20,
+        "min": 1,
+        "max": 3
+      }
+    ]
+  },
+  {
+    "table_id": "ogre_lord",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 60,
+        "min": 120,
+        "max": 260
+      },
+      {
+        "item_id": "gem",
+        "weight": 30,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "item_id": "club",
+        "weight": 15,
+        "min": 0,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "table_id": "cyclops_elite",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 60,
+        "min": 140,
+        "max": 280
+      },
+      {
+        "item_id": "gem",
+        "weight": 30,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "item_id": "iron_ore",
+        "weight": 20,
+        "min": 5,
+        "max": 12
+      }
+    ]
+  },
+  {
+    "table_id": "titan_elite",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 50,
+        "min": 180,
+        "max": 320
+      },
+      {
+        "item_id": "reagent_sulfurous_ash",
+        "weight": 30,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "item_id": "gem",
+        "weight": 25,
+        "min": 1,
+        "max": 3
+      }
+    ]
+  },
+  {
+    "table_id": "gazer_common",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 40,
+        "min": 30,
+        "max": 100
+      },
+      {
+        "item_id": "reagent_black_pearl",
+        "weight": 30,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "item_id": "reagent_spider_silk",
+        "weight": 30,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "item_id": "gem",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "table_id": "elder_gazer",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 50,
+        "min": 100,
+        "max": 220
+      },
+      {
+        "item_id": "reagent_mandrake_root",
+        "weight": 40,
+        "min": 2,
+        "max": 4
+      },
+      {
+        "item_id": "gem",
+        "weight": 30,
+        "min": 1,
+        "max": 2
+      }
+    ]
+  },
+  {
+    "table_id": "elemental_earth",
+    "entries": [
+      {
+        "item_id": "iron_ore",
+        "weight": 70,
+        "min": 10,
+        "max": 25
+      },
+      {
+        "item_id": "gem",
+        "weight": 30,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "gold_coin",
+        "weight": 40,
+        "min": 50,
+        "max": 130
+      }
+    ]
+  },
+  {
+    "table_id": "elemental_fire",
+    "entries": [
+      {
+        "item_id": "reagent_sulfurous_ash",
+        "weight": 70,
+        "min": 4,
+        "max": 10
+      },
+      {
+        "item_id": "gem",
+        "weight": 30,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "gold_coin",
+        "weight": 40,
+        "min": 60,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "table_id": "elemental_air",
+    "entries": [
+      {
+        "item_id": "reagent_black_pearl",
+        "weight": 60,
+        "min": 3,
+        "max": 8
+      },
+      {
+        "item_id": "gem",
+        "weight": 30,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "gold_coin",
+        "weight": 40,
+        "min": 60,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "table_id": "elemental_water",
+    "entries": [
+      {
+        "item_id": "reagent_blood_moss",
+        "weight": 60,
+        "min": 3,
+        "max": 8
+      },
+      {
+        "item_id": "gem",
+        "weight": 30,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "gold_coin",
+        "weight": 40,
+        "min": 60,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "table_id": "reaper_node",
+    "entries": [
+      {
+        "item_id": "wood_log",
+        "weight": 70,
+        "min": 5,
+        "max": 25
+      },
+      {
+        "item_id": "reagent_mandrake_root",
+        "weight": 40,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "item_id": "gem",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "table_id": "daemon_elite",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 50,
+        "min": 120,
+        "max": 240
+      },
+      {
+        "item_id": "reagent_nightshade",
+        "weight": 30,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "item_id": "reagent_garlic",
+        "weight": 30,
+        "min": 2,
+        "max": 5
+      },
+      {
+        "item_id": "gem",
+        "weight": 25,
+        "min": 1,
+        "max": 2
+      }
+    ]
+  },
+  {
+    "table_id": "balron_boss",
+    "entries": [
+      {
+        "item_id": "gold_coin",
+        "weight": 60,
+        "min": 220,
+        "max": 420
+      },
+      {
+        "item_id": "reagent_mandrake_root",
+        "weight": 40,
+        "min": 3,
+        "max": 7
+      },
+      {
+        "item_id": "gem",
+        "weight": 30,
+        "min": 2,
+        "max": 4
+      }
+    ]
+  },
+  {
+    "table_id": "drake_common",
+    "entries": [
+      {
+        "item_id": "meat_raw",
+        "weight": 60,
+        "min": 3,
+        "max": 6
+      },
+      {
+        "item_id": "leather",
+        "weight": 50,
+        "min": 8,
+        "max": 16
+      },
+      {
+        "item_id": "gold_coin",
+        "weight": 50,
+        "min": 80,
+        "max": 160
+      },
+      {
+        "item_id": "gem",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "table_id": "wyvern_common",
+    "entries": [
+      {
+        "item_id": "venom_sac",
+        "weight": 40,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "leather",
+        "weight": 50,
+        "min": 6,
+        "max": 12
+      },
+      {
+        "item_id": "gold_coin",
+        "weight": 50,
+        "min": 80,
+        "max": 160
+      }
+    ]
+  },
+  {
+    "table_id": "dragon_boss",
+    "entries": [
+      {
+        "item_id": "leather",
+        "weight": 80,
+        "min": 20,
+        "max": 40
+      },
+      {
+        "item_id": "meat_raw",
+        "weight": 60,
+        "min": 5,
+        "max": 10
+      },
+      {
+        "item_id": "gem",
+        "weight": 40,
+        "min": 2,
+        "max": 4
+      },
+      {
+        "item_id": "gold_coin",
+        "weight": 70,
+        "min": 250,
+        "max": 500
+      },
+      {
+        "item_id": "reagent_mandrake_root",
+        "weight": 30,
+        "min": 3,
+        "max": 6
+      }
+    ]
+  },
+  {
+    "table_id": "ancient_wyrm_mythic",
+    "entries": [
+      {
+        "item_id": "leather",
+        "weight": 80,
+        "min": 25,
+        "max": 50
+      },
+      {
+        "item_id": "gem",
+        "weight": 50,
+        "min": 3,
+        "max": 6
+      },
+      {
+        "item_id": "gold_coin",
+        "weight": 70,
+        "min": 400,
+        "max": 800
+      },
+      {
+        "item_id": "reagent_mandrake_root",
+        "weight": 40,
+        "min": 4,
+        "max": 8
+      }
+    ]
+  }
+]

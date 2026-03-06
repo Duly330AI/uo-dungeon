@@ -1,0 +1,865 @@
+[
+  {
+    "id": "smelt_iron_ingot",
+    "inputs": [
+      {
+        "item_id": "iron_ore",
+        "qty": 2
+      }
+    ],
+    "tool": "tongs",
+    "station": "forge",
+    "output": {
+      "item_id": "iron_ingot",
+      "qty": 1
+    },
+    "time": 6,
+    "min_skill": {
+      "mining": 10
+    }
+  },
+  {
+    "id": "smelt_dull_copper_ingot",
+    "inputs": [
+      {
+        "item_id": "dull_copper_ore",
+        "qty": 2
+      }
+    ],
+    "tool": "tongs",
+    "station": "forge",
+    "output": {
+      "item_id": "dull_copper_ingot",
+      "qty": 1
+    },
+    "time": 7,
+    "min_skill": {
+      "mining": 20
+    }
+  },
+  {
+    "id": "smelt_shadow_iron_ingot",
+    "inputs": [
+      {
+        "item_id": "shadow_iron_ore",
+        "qty": 2
+      }
+    ],
+    "tool": "tongs",
+    "station": "forge",
+    "output": {
+      "item_id": "shadow_iron_ingot",
+      "qty": 1
+    },
+    "time": 7,
+    "min_skill": {
+      "mining": 30
+    }
+  },
+  {
+    "id": "smelt_copper_ingot",
+    "inputs": [
+      {
+        "item_id": "copper_ore",
+        "qty": 2
+      }
+    ],
+    "tool": "tongs",
+    "station": "forge",
+    "output": {
+      "item_id": "copper_ingot",
+      "qty": 1
+    },
+    "time": 7,
+    "min_skill": {
+      "mining": 35
+    }
+  },
+  {
+    "id": "smelt_bronze_ingot",
+    "inputs": [
+      {
+        "item_id": "bronze_ore",
+        "qty": 2
+      }
+    ],
+    "tool": "tongs",
+    "station": "forge",
+    "output": {
+      "item_id": "bronze_ingot",
+      "qty": 1
+    },
+    "time": 8,
+    "min_skill": {
+      "mining": 40
+    }
+  },
+  {
+    "id": "smelt_gold_ingot",
+    "inputs": [
+      {
+        "item_id": "gold_ore",
+        "qty": 2
+      }
+    ],
+    "tool": "tongs",
+    "station": "forge",
+    "output": {
+      "item_id": "gold_ingot",
+      "qty": 1
+    },
+    "time": 9,
+    "min_skill": {
+      "mining": 50
+    }
+  },
+  {
+    "id": "smelt_agapite_ingot",
+    "inputs": [
+      {
+        "item_id": "agapite_ore",
+        "qty": 2
+      }
+    ],
+    "tool": "tongs",
+    "station": "forge",
+    "output": {
+      "item_id": "agapite_ingot",
+      "qty": 1
+    },
+    "time": 10,
+    "min_skill": {
+      "mining": 60
+    }
+  },
+  {
+    "id": "smelt_verite_ingot",
+    "inputs": [
+      {
+        "item_id": "verite_ore",
+        "qty": 2
+      }
+    ],
+    "tool": "tongs",
+    "station": "forge",
+    "output": {
+      "item_id": "verite_ingot",
+      "qty": 1
+    },
+    "time": 11,
+    "min_skill": {
+      "mining": 70
+    }
+  },
+  {
+    "id": "smelt_valorite_ingot",
+    "inputs": [
+      {
+        "item_id": "valorite_ore",
+        "qty": 2
+      }
+    ],
+    "tool": "tongs",
+    "station": "forge",
+    "output": {
+      "item_id": "valorite_ingot",
+      "qty": 1
+    },
+    "time": 12,
+    "min_skill": {
+      "mining": 80
+    }
+  },
+  {
+    "id": "saw_board",
+    "inputs": [
+      {
+        "item_id": "wood_log",
+        "qty": 1
+      }
+    ],
+    "tool": "saw",
+    "station": "workbench",
+    "output": {
+      "item_id": "wood_board",
+      "qty": 2
+    },
+    "time": 4,
+    "min_skill": {
+      "lumberjacking": 5
+    }
+  },
+  {
+    "id": "saw_oak_board",
+    "inputs": [
+      {
+        "item_id": "oak_log",
+        "qty": 1
+      }
+    ],
+    "tool": "saw",
+    "station": "workbench",
+    "output": {
+      "item_id": "oak_board",
+      "qty": 2
+    },
+    "time": 5,
+    "min_skill": {
+      "lumberjacking": 20
+    }
+  },
+  {
+    "id": "saw_ash_board",
+    "inputs": [
+      {
+        "item_id": "ash_log",
+        "qty": 1
+      }
+    ],
+    "tool": "saw",
+    "station": "workbench",
+    "output": {
+      "item_id": "ash_board",
+      "qty": 2
+    },
+    "time": 5,
+    "min_skill": {
+      "lumberjacking": 25
+    }
+  },
+  {
+    "id": "saw_yew_board",
+    "inputs": [
+      {
+        "item_id": "yew_log",
+        "qty": 1
+      }
+    ],
+    "tool": "saw",
+    "station": "workbench",
+    "output": {
+      "item_id": "yew_board",
+      "qty": 2
+    },
+    "time": 6,
+    "min_skill": {
+      "lumberjacking": 35
+    }
+  },
+  {
+    "id": "fletch_shafts",
+    "inputs": [
+      {
+        "item_id": "wood_board",
+        "qty": 1
+      }
+    ],
+    "tool": "fletching_kit",
+    "station": "workbench",
+    "output": {
+      "item_id": "arrow_shaft",
+      "qty": 3
+    },
+    "time": 3,
+    "min_skill": {
+      "bowcraft_fletching": 5
+    }
+  },
+  {
+    "id": "spin_bowstring",
+    "inputs": [
+      {
+        "item_id": "thread_spool",
+        "qty": 2
+      }
+    ],
+    "tool": "fletching_kit",
+    "station": "workbench",
+    "output": {
+      "item_id": "bowstring",
+      "qty": 1
+    },
+    "time": 5,
+    "min_skill": {
+      "bowcraft_fletching": 10
+    }
+  },
+  {
+    "id": "craft_arrows",
+    "inputs": [
+      {
+        "item_id": "arrow_shaft",
+        "qty": 5
+      },
+      {
+        "item_id": "feather",
+        "qty": 5
+      },
+      {
+        "item_id": "iron_ingot",
+        "qty": 1
+      }
+    ],
+    "tool": "fletching_kit",
+    "station": "workbench",
+    "output": {
+      "item_id": "arrow",
+      "qty": 10
+    },
+    "time": 6,
+    "min_skill": {
+      "bowcraft_fletching": 15
+    }
+  },
+  {
+    "id": "craft_bolts",
+    "inputs": [
+      {
+        "item_id": "arrow_shaft",
+        "qty": 5
+      },
+      {
+        "item_id": "iron_ingot",
+        "qty": 1
+      }
+    ],
+    "tool": "fletching_kit",
+    "station": "workbench",
+    "output": {
+      "item_id": "bolt",
+      "qty": 10
+    },
+    "time": 6,
+    "min_skill": {
+      "bowcraft_fletching": 20
+    }
+  },
+  {
+    "id": "bow_short",
+    "inputs": [
+      {
+        "item_id": "oak_board",
+        "qty": 2
+      },
+      {
+        "item_id": "bowstring",
+        "qty": 1
+      }
+    ],
+    "tool": "fletching_kit",
+    "station": "workbench",
+    "output": {
+      "item_id": "short_bow",
+      "qty": 1
+    },
+    "time": 12,
+    "min_skill": {
+      "bowcraft_fletching": 25
+    }
+  },
+  {
+    "id": "bow_long",
+    "inputs": [
+      {
+        "item_id": "yew_board",
+        "qty": 3
+      },
+      {
+        "item_id": "bowstring",
+        "qty": 1
+      }
+    ],
+    "tool": "fletching_kit",
+    "station": "workbench",
+    "output": {
+      "item_id": "long_bow",
+      "qty": 1
+    },
+    "time": 16,
+    "min_skill": {
+      "bowcraft_fletching": 40
+    }
+  },
+  {
+    "id": "crossbow_standard",
+    "inputs": [
+      {
+        "item_id": "oak_board",
+        "qty": 3
+      },
+      {
+        "item_id": "iron_ingot",
+        "qty": 2
+      },
+      {
+        "item_id": "bowstring",
+        "qty": 1
+      }
+    ],
+    "tool": "fletching_kit",
+    "station": "workbench",
+    "output": {
+      "item_id": "crossbow",
+      "qty": 1
+    },
+    "time": 18,
+    "min_skill": {
+      "bowcraft_fletching": 45
+    }
+  },
+  {
+    "id": "heavy_crossbow",
+    "inputs": [
+      {
+        "item_id": "ash_board",
+        "qty": 4
+      },
+      {
+        "item_id": "iron_ingot",
+        "qty": 4
+      },
+      {
+        "item_id": "bowstring",
+        "qty": 1
+      }
+    ],
+    "tool": "fletching_kit",
+    "station": "workbench",
+    "output": {
+      "item_id": "heavy_crossbow",
+      "qty": 1
+    },
+    "time": 22,
+    "min_skill": {
+      "bowcraft_fletching": 55
+    }
+  },
+  {
+    "id": "iron_dagger",
+    "inputs": [
+      {
+        "item_id": "iron_ingot",
+        "qty": 2
+      }
+    ],
+    "tool": "smith_hammer",
+    "station": "forge",
+    "output": {
+      "item_id": "dagger",
+      "qty": 1
+    },
+    "time": 10,
+    "min_skill": {
+      "blacksmithy": 10
+    }
+  },
+  {
+    "id": "iron_short_sword",
+    "inputs": [
+      {
+        "item_id": "iron_ingot",
+        "qty": 4
+      },
+      {
+        "item_id": "wood_board",
+        "qty": 1
+      }
+    ],
+    "tool": "smith_hammer",
+    "station": "forge",
+    "output": {
+      "item_id": "short_sword",
+      "qty": 1
+    },
+    "time": 14,
+    "min_skill": {
+      "blacksmithy": 15
+    }
+  },
+  {
+    "id": "iron_long_sword",
+    "inputs": [
+      {
+        "item_id": "iron_ingot",
+        "qty": 6
+      },
+      {
+        "item_id": "wood_board",
+        "qty": 1
+      }
+    ],
+    "tool": "smith_hammer",
+    "station": "forge",
+    "output": {
+      "item_id": "long_sword",
+      "qty": 1
+    },
+    "time": 18,
+    "min_skill": {
+      "blacksmithy": 25
+    }
+  },
+  {
+    "id": "iron_mace",
+    "inputs": [
+      {
+        "item_id": "iron_ingot",
+        "qty": 4
+      },
+      {
+        "item_id": "wood_board",
+        "qty": 1
+      }
+    ],
+    "tool": "smith_hammer",
+    "station": "forge",
+    "output": {
+      "item_id": "mace",
+      "qty": 1
+    },
+    "time": 14,
+    "min_skill": {
+      "blacksmithy": 20
+    }
+  },
+  {
+    "id": "iron_war_axe",
+    "inputs": [
+      {
+        "item_id": "iron_ingot",
+        "qty": 6
+      },
+      {
+        "item_id": "wood_board",
+        "qty": 1
+      }
+    ],
+    "tool": "smith_hammer",
+    "station": "forge",
+    "output": {
+      "item_id": "war_axe",
+      "qty": 1
+    },
+    "time": 18,
+    "min_skill": {
+      "blacksmithy": 28
+    }
+  },
+  {
+    "id": "iron_halberd",
+    "inputs": [
+      {
+        "item_id": "iron_ingot",
+        "qty": 8
+      },
+      {
+        "item_id": "wood_board",
+        "qty": 2
+      }
+    ],
+    "tool": "smith_hammer",
+    "station": "forge",
+    "output": {
+      "item_id": "halberd",
+      "qty": 1
+    },
+    "time": 24,
+    "min_skill": {
+      "blacksmithy": 40
+    }
+  },
+  {
+    "id": "iron_heater_shield",
+    "inputs": [
+      {
+        "item_id": "iron_ingot",
+        "qty": 6
+      },
+      {
+        "item_id": "leather_strip",
+        "qty": 2
+      }
+    ],
+    "tool": "smith_hammer",
+    "station": "forge",
+    "output": {
+      "item_id": "heater_shield",
+      "qty": 1
+    },
+    "time": 18,
+    "min_skill": {
+      "blacksmithy": 35
+    }
+  },
+  {
+    "id": "carp_buckler",
+    "inputs": [
+      {
+        "item_id": "wood_board",
+        "qty": 3
+      },
+      {
+        "item_id": "iron_nails",
+        "qty": 4
+      }
+    ],
+    "tool": "saw",
+    "station": "workbench",
+    "output": {
+      "item_id": "buckler",
+      "qty": 1
+    },
+    "time": 12,
+    "min_skill": {
+      "carpentry": 20
+    }
+  },
+  {
+    "id": "carp_wooden_shield",
+    "inputs": [
+      {
+        "item_id": "wood_board",
+        "qty": 4
+      },
+      {
+        "item_id": "iron_nails",
+        "qty": 6
+      }
+    ],
+    "tool": "saw",
+    "station": "workbench",
+    "output": {
+      "item_id": "wooden_shield",
+      "qty": 1
+    },
+    "time": 14,
+    "min_skill": {
+      "carpentry": 25
+    }
+  },
+  {
+    "id": "carp_quarterstaff",
+    "inputs": [
+      {
+        "item_id": "wood_board",
+        "qty": 3
+      }
+    ],
+    "tool": "saw",
+    "station": "workbench",
+    "output": {
+      "item_id": "quarterstaff",
+      "qty": 1
+    },
+    "time": 10,
+    "min_skill": {
+      "carpentry": 15
+    }
+  },
+  {
+    "id": "carp_gnarled_staff",
+    "inputs": [
+      {
+        "item_id": "oak_board",
+        "qty": 3
+      }
+    ],
+    "tool": "saw",
+    "station": "workbench",
+    "output": {
+      "item_id": "gnarled_staff",
+      "qty": 1
+    },
+    "time": 12,
+    "min_skill": {
+      "carpentry": 25
+    }
+  },
+  {
+    "id": "tailor_bandages",
+    "inputs": [
+      {
+        "item_id": "cloth_bolt",
+        "qty": 1
+      }
+    ],
+    "tool": "sewing_kit",
+    "station": "workbench",
+    "output": {
+      "item_id": "bandage",
+      "qty": 10
+    },
+    "time": 6,
+    "min_skill": {
+      "tailoring": 5
+    }
+  },
+  {
+    "id": "tailor_leather_strips",
+    "inputs": [
+      {
+        "item_id": "leather",
+        "qty": 1
+      }
+    ],
+    "tool": "sewing_kit",
+    "station": "workbench",
+    "output": {
+      "item_id": "leather_strip",
+      "qty": 2
+    },
+    "time": 6,
+    "min_skill": {
+      "tailoring": 10
+    }
+  },
+  {
+    "id": "cook_meat",
+    "inputs": [
+      {
+        "item_id": "meat_raw",
+        "qty": 1
+      }
+    ],
+    "tool": "cooking_pot",
+    "station": "campfire",
+    "output": {
+      "item_id": "cooked_ribs",
+      "qty": 1
+    },
+    "time": 8,
+    "min_skill": {
+      "cooking": 5
+    }
+  },
+  {
+    "id": "cook_fish_steak",
+    "inputs": [
+      {
+        "item_id": "fish_steak_raw",
+        "qty": 1
+      }
+    ],
+    "tool": "cooking_pot",
+    "station": "campfire",
+    "output": {
+      "item_id": "fish_steak",
+      "qty": 1
+    },
+    "time": 6,
+    "min_skill": {
+      "cooking": 5
+    }
+  },
+  {
+    "id": "bake_bread",
+    "inputs": [
+      {
+        "item_id": "wood_board",
+        "qty": 1
+      }
+    ],
+    "tool": "cooking_pot",
+    "station": "kitchen",
+    "output": {
+      "item_id": "bread_loaf",
+      "qty": 1
+    },
+    "time": 10,
+    "min_skill": {
+      "cooking": 10
+    }
+  },
+  {
+    "id": "brew_heal_potion",
+    "inputs": [
+      {
+        "item_id": "reagent_ginseng",
+        "qty": 1
+      },
+      {
+        "item_id": "reagent_garlic",
+        "qty": 1
+      }
+    ],
+    "tool": "mortar_pestle",
+    "station": "alchemist_table",
+    "output": {
+      "item_id": "heal_potion",
+      "qty": 1
+    },
+    "time": 8,
+    "min_skill": {
+      "alchemy": 10
+    }
+  },
+  {
+    "id": "brew_greater_heal_potion",
+    "inputs": [
+      {
+        "item_id": "reagent_ginseng",
+        "qty": 2
+      },
+      {
+        "item_id": "reagent_mandrake_root",
+        "qty": 1
+      }
+    ],
+    "tool": "mortar_pestle",
+    "station": "alchemist_table",
+    "output": {
+      "item_id": "greater_heal_potion",
+      "qty": 1
+    },
+    "time": 12,
+    "min_skill": {
+      "alchemy": 30
+    }
+  },
+  {
+    "id": "brew_cure_potion",
+    "inputs": [
+      {
+        "item_id": "reagent_garlic",
+        "qty": 1
+      },
+      {
+        "item_id": "reagent_spiders_silk",
+        "qty": 1
+      }
+    ],
+    "tool": "mortar_pestle",
+    "station": "alchemist_table",
+    "output": {
+      "item_id": "cure_potion",
+      "qty": 1
+    },
+    "time": 8,
+    "min_skill": {
+      "alchemy": 15
+    }
+  },
+  {
+    "id": "brew_strength_potion",
+    "inputs": [
+      {
+        "item_id": "reagent_bloodmoss",
+        "qty": 1
+      },
+      {
+        "item_id": "reagent_mandrake_root",
+        "qty": 1
+      }
+    ],
+    "tool": "mortar_pestle",
+    "station": "alchemist_table",
+    "output": {
+      "item_id": "strength_potion",
+      "qty": 1
+    },
+    "time": 10,
+    "min_skill": {
+      "alchemy": 25
+    }
+  }
+]

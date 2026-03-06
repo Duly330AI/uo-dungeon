@@ -1,0 +1,1408 @@
+[
+  {
+    "id": "ember",
+    "name": "Ember",
+    "school": "fire",
+    "circle": 1,
+    "cost": {
+      "mana": 4,
+      "reagents": {
+        "reagent_black_pearl": 1,
+        "reagent_sulfurous_ash": 1
+      }
+    },
+    "cast_rounds": 0,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "damage",
+        "element": "fire",
+        "base": 6,
+        "variance_pct": 0.15,
+        "scaling": {
+          "INT": 0.1
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.08,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "nuke"
+    ]
+  },
+  {
+    "id": "frost_nip",
+    "name": "Frost Nip",
+    "school": "cold",
+    "circle": 1,
+    "cost": {
+      "mana": 4,
+      "reagents": {
+        "reagent_black_pearl": 1,
+        "reagent_spiders_silk": 1
+      }
+    },
+    "cast_rounds": 0,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "damage",
+        "element": "cold",
+        "base": 5,
+        "variance_pct": 0.15,
+        "scaling": {
+          "INT": 0.1
+        }
+      },
+      {
+        "type": "slow",
+        "move_tiles_delta": -1,
+        "rounds": 1
+      }
+    ],
+    "fizzle": {
+      "base": 0.08,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "control",
+      "nuke"
+    ]
+  },
+  {
+    "id": "spark",
+    "name": "Spark",
+    "school": "energy",
+    "circle": 1,
+    "cost": {
+      "mana": 4,
+      "reagents": {
+        "reagent_black_pearl": 1,
+        "reagent_mandrake_root": 1
+      }
+    },
+    "cast_rounds": 0,
+    "range_tiles": 6,
+    "effects": [
+      {
+        "type": "damage",
+        "element": "energy",
+        "base": 6,
+        "variance_pct": 0.15,
+        "scaling": {
+          "INT": 0.1
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.08,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "nuke"
+    ]
+  },
+  {
+    "id": "minor_ward",
+    "name": "Minor Ward",
+    "school": "earth",
+    "circle": 1,
+    "cost": {
+      "mana": 3,
+      "reagents": {
+        "reagent_bloodmoss": 1,
+        "reagent_ginseng": 1
+      }
+    },
+    "cast_rounds": 0,
+    "range_tiles": 0,
+    "effects": [
+      {
+        "type": "ward",
+        "resists": {
+          "fire": 3,
+          "cold": 3,
+          "poison": 3,
+          "energy": 3
+        },
+        "rounds": 2,
+        "scaling": {
+          "magery": 0.02
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.08,
+      "magery_factor": 0.002
+    },
+    "resist_check": null,
+    "ai_tags": [
+      "buff"
+    ]
+  },
+  {
+    "id": "minor_cure",
+    "name": "Minor Cure",
+    "school": "earth",
+    "circle": 1,
+    "cost": {
+      "mana": 3,
+      "reagents": {
+        "reagent_garlic": 1,
+        "reagent_ginseng": 1
+      }
+    },
+    "cast_rounds": 0,
+    "range_tiles": 0,
+    "effects": [
+      {
+        "type": "cleanse",
+        "remove": [
+          "poison"
+        ],
+        "strength": "lesser"
+      }
+    ],
+    "fizzle": {
+      "base": 0.08,
+      "magery_factor": 0.002
+    },
+    "resist_check": null,
+    "ai_tags": [
+      "utility",
+      "heal"
+    ]
+  },
+  {
+    "id": "illuminate",
+    "name": "Illuminate",
+    "school": "energy",
+    "circle": 1,
+    "cost": {
+      "mana": 2,
+      "reagents": {
+        "reagent_black_pearl": 1
+      }
+    },
+    "cast_rounds": 0,
+    "range_tiles": 0,
+    "effects": [
+      {
+        "type": "light",
+        "radius": 4,
+        "rounds": 8
+      }
+    ],
+    "fizzle": {
+      "base": 0.08,
+      "magery_factor": 0.002
+    },
+    "resist_check": null,
+    "ai_tags": [
+      "utility"
+    ]
+  },
+  {
+    "id": "fire_dart",
+    "name": "Fire Dart",
+    "school": "fire",
+    "circle": 2,
+    "cost": {
+      "mana": 6,
+      "reagents": {
+        "reagent_black_pearl": 1,
+        "reagent_sulfurous_ash": 1
+      }
+    },
+    "cast_rounds": 0,
+    "range_tiles": 6,
+    "effects": [
+      {
+        "type": "damage",
+        "element": "fire",
+        "base": 9,
+        "variance_pct": 0.15,
+        "scaling": {
+          "INT": 0.2
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.12,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "nuke"
+    ]
+  },
+  {
+    "id": "ice_shards",
+    "name": "Ice Shards",
+    "school": "cold",
+    "circle": 2,
+    "cost": {
+      "mana": 6,
+      "reagents": {
+        "reagent_black_pearl": 1,
+        "reagent_spiders_silk": 1
+      }
+    },
+    "cast_rounds": 0,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "damage",
+        "element": "cold",
+        "base": 8,
+        "variance_pct": 0.15,
+        "scaling": {
+          "INT": 0.1
+        }
+      },
+      {
+        "type": "slow",
+        "move_tiles_delta": -1,
+        "rounds": 2
+      }
+    ],
+    "fizzle": {
+      "base": 0.12,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "nuke",
+      "control"
+    ]
+  },
+  {
+    "id": "venom_pin",
+    "name": "Venom Pin",
+    "school": "toxic",
+    "circle": 2,
+    "cost": {
+      "mana": 5,
+      "reagents": {
+        "reagent_nightshade": 1,
+        "reagent_garlic": 1
+      }
+    },
+    "cast_rounds": 0,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "dot",
+        "element": "poison",
+        "base_per_round": 3,
+        "variance_pct": 0.1,
+        "rounds": 3,
+        "scaling": {
+          "INT": 0.1
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.12,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "debuff",
+      "dot"
+    ]
+  },
+  {
+    "id": "stone_skin",
+    "name": "Stone Skin",
+    "school": "earth",
+    "circle": 2,
+    "cost": {
+      "mana": 5,
+      "reagents": {
+        "reagent_bloodmoss": 1,
+        "reagent_ginseng": 1,
+        "reagent_garlic": 1
+      }
+    },
+    "cast_rounds": 1,
+    "range_tiles": 0,
+    "effects": [
+      {
+        "type": "ward",
+        "resists": {
+          "slash": 5,
+          "pierce": 5,
+          "blunt": 5
+        },
+        "rounds": 2,
+        "scaling": {
+          "magery": 0.02
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.12,
+      "magery_factor": 0.002
+    },
+    "resist_check": null,
+    "ai_tags": [
+      "buff"
+    ]
+  },
+  {
+    "id": "mend",
+    "name": "Mend",
+    "school": "energy",
+    "circle": 2,
+    "cost": {
+      "mana": 6,
+      "reagents": {
+        "reagent_ginseng": 1,
+        "reagent_mandrake_root": 1
+      }
+    },
+    "cast_rounds": 1,
+    "range_tiles": 0,
+    "effects": [
+      {
+        "type": "heal",
+        "base": 9,
+        "variance_pct": 0.15,
+        "scaling": {
+          "INT": 0.1
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.12,
+      "magery_factor": 0.002
+    },
+    "resist_check": null,
+    "ai_tags": [
+      "heal"
+    ]
+  },
+  {
+    "id": "detect_magic",
+    "name": "Detect Magic",
+    "school": "energy",
+    "circle": 2,
+    "cost": {
+      "mana": 3,
+      "reagents": {
+        "reagent_mandrake_root": 1,
+        "reagent_black_pearl": 1
+      }
+    },
+    "cast_rounds": 0,
+    "range_tiles": 0,
+    "effects": [
+      {
+        "type": "reveal",
+        "radius_tiles": 6,
+        "tags": [
+          "trap",
+          "secret",
+          "magic"
+        ],
+        "rounds": 3
+      }
+    ],
+    "fizzle": {
+      "base": 0.12,
+      "magery_factor": 0.002
+    },
+    "resist_check": null,
+    "ai_tags": [
+      "utility"
+    ]
+  },
+  {
+    "id": "fireball",
+    "name": "Fireball",
+    "school": "fire",
+    "circle": 3,
+    "cost": {
+      "mana": 8,
+      "reagents": {
+        "reagent_black_pearl": 1,
+        "reagent_sulfurous_ash": 1
+      }
+    },
+    "cast_rounds": 1,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "damage",
+        "element": "fire",
+        "base": 14,
+        "variance_pct": 0.15,
+        "scaling": {
+          "INT": 0.15,
+          "magery": 0.04
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.15,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "nuke"
+    ]
+  },
+  {
+    "id": "blink",
+    "name": "Blink",
+    "school": "energy",
+    "circle": 3,
+    "cost": {
+      "mana": 7,
+      "reagents": {
+        "reagent_black_pearl": 1,
+        "reagent_mandrake_root": 1
+      }
+    },
+    "cast_rounds": 0,
+    "range_tiles": 0,
+    "effects": [
+      {
+        "type": "teleport",
+        "tiles": 3
+      }
+    ],
+    "fizzle": {
+      "base": 0.15,
+      "magery_factor": 0.002
+    },
+    "resist_check": null,
+    "ai_tags": [
+      "escape",
+      "utility"
+    ]
+  },
+  {
+    "id": "arc_lance",
+    "name": "Arc Lance",
+    "school": "energy",
+    "circle": 3,
+    "cost": {
+      "mana": 7,
+      "reagents": {
+        "reagent_black_pearl": 1,
+        "reagent_mandrake_root": 1
+      }
+    },
+    "cast_rounds": 1,
+    "range_tiles": 6,
+    "effects": [
+      {
+        "type": "damage",
+        "element": "energy",
+        "base": 12,
+        "variance_pct": 0.15,
+        "scaling": {
+          "INT": 0.15,
+          "magery": 0.04
+        },
+        "properties": {
+          "pierce_shield": true
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.15,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "nuke"
+    ]
+  },
+  {
+    "id": "earthen_grasp",
+    "name": "Earthen Grasp",
+    "school": "earth",
+    "circle": 3,
+    "cost": {
+      "mana": 6,
+      "reagents": {
+        "reagent_bloodmoss": 1,
+        "reagent_spiders_silk": 1
+      }
+    },
+    "cast_rounds": 1,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "root",
+        "rounds": 1
+      }
+    ],
+    "fizzle": {
+      "base": 0.15,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "control"
+    ]
+  },
+  {
+    "id": "magic_shield",
+    "name": "Magic Shield",
+    "school": "energy",
+    "circle": 3,
+    "cost": {
+      "mana": 7,
+      "reagents": {
+        "reagent_mandrake_root": 1,
+        "reagent_spiders_silk": 1
+      }
+    },
+    "cast_rounds": 1,
+    "range_tiles": 0,
+    "effects": [
+      {
+        "type": "shield",
+        "absorb": 16,
+        "variance_pct": 0.1,
+        "rounds": 2,
+        "scaling": {
+          "INT": 0.1,
+          "magery": 0.03
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.15,
+      "magery_factor": 0.002
+    },
+    "resist_check": null,
+    "ai_tags": [
+      "buff"
+    ]
+  },
+  {
+    "id": "cure",
+    "name": "Cure",
+    "school": "earth",
+    "circle": 3,
+    "cost": {
+      "mana": 6,
+      "reagents": {
+        "reagent_garlic": 1,
+        "reagent_ginseng": 2
+      }
+    },
+    "cast_rounds": 1,
+    "range_tiles": 0,
+    "effects": [
+      {
+        "type": "cleanse",
+        "remove": [
+          "poison",
+          "disease"
+        ],
+        "strength": "normal"
+      }
+    ],
+    "fizzle": {
+      "base": 0.15,
+      "magery_factor": 0.002
+    },
+    "resist_check": null,
+    "ai_tags": [
+      "utility",
+      "heal"
+    ]
+  },
+  {
+    "id": "flame_wave",
+    "name": "Flame Wave",
+    "school": "fire",
+    "circle": 4,
+    "cost": {
+      "mana": 10,
+      "reagents": {
+        "reagent_black_pearl": 1,
+        "reagent_sulfurous_ash": 2
+      }
+    },
+    "cast_rounds": 1,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "cone_damage",
+        "element": "fire",
+        "radius": 3,
+        "base": 10,
+        "variance_pct": 0.1,
+        "scaling": {
+          "INT": 0.1
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.18,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "aoe",
+      "nuke"
+    ]
+  },
+  {
+    "id": "deep_freeze",
+    "name": "Deep Freeze",
+    "school": "cold",
+    "circle": 4,
+    "cost": {
+      "mana": 10,
+      "reagents": {
+        "reagent_black_pearl": 1,
+        "reagent_spiders_silk": 2
+      }
+    },
+    "cast_rounds": 1,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "damage",
+        "element": "cold",
+        "base": 10,
+        "variance_pct": 0.12,
+        "scaling": {
+          "INT": 0.1
+        }
+      },
+      {
+        "type": "root",
+        "rounds": 2
+      }
+    ],
+    "fizzle": {
+      "base": 0.18,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "control",
+      "nuke"
+    ]
+  },
+  {
+    "id": "toxic_mist",
+    "name": "Toxic Mist",
+    "school": "toxic",
+    "circle": 4,
+    "cost": {
+      "mana": 9,
+      "reagents": {
+        "reagent_nightshade": 2,
+        "reagent_garlic": 1
+      }
+    },
+    "cast_rounds": 1,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "dot",
+        "element": "poison",
+        "base_per_round": 4,
+        "variance_pct": 0.1,
+        "rounds": 3,
+        "aoe": {
+          "shape": "cloud",
+          "radius": 2,
+          "persistence_rounds": 3
+        },
+        "scaling": {
+          "INT": 0.1
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.18,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "aoe",
+      "dot",
+      "debuff"
+    ]
+  },
+  {
+    "id": "chain_bolt",
+    "name": "Chain Bolt",
+    "school": "energy",
+    "circle": 4,
+    "cost": {
+      "mana": 10,
+      "reagents": {
+        "reagent_black_pearl": 2,
+        "reagent_mandrake_root": 1
+      }
+    },
+    "cast_rounds": 1,
+    "range_tiles": 6,
+    "effects": [
+      {
+        "type": "damage",
+        "element": "energy",
+        "base": 13,
+        "variance_pct": 0.15,
+        "scaling": {
+          "INT": 0.15,
+          "magery": 0.04
+        },
+        "chain": {
+          "jumps": 2,
+          "falloff": 0.25
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.18,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "nuke",
+      "aoe"
+    ]
+  },
+  {
+    "id": "earth_spikes",
+    "name": "Earth Spikes",
+    "school": "earth",
+    "circle": 4,
+    "cost": {
+      "mana": 9,
+      "reagents": {
+        "reagent_bloodmoss": 2,
+        "reagent_ginseng": 1
+      }
+    },
+    "cast_rounds": 1,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "line_damage",
+        "element": "earth",
+        "length_tiles": 4,
+        "base": 9,
+        "variance_pct": 0.12,
+        "scaling": {
+          "INT": 0.1
+        }
+      },
+      {
+        "type": "slow",
+        "move_tiles_delta": -1,
+        "rounds": 1
+      }
+    ],
+    "fizzle": {
+      "base": 0.18,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "aoe",
+      "control"
+    ]
+  },
+  {
+    "id": "dispel_magic",
+    "name": "Dispel Magic",
+    "school": "energy",
+    "circle": 4,
+    "cost": {
+      "mana": 8,
+      "reagents": {
+        "reagent_mandrake_root": 2,
+        "reagent_black_pearl": 1
+      }
+    },
+    "cast_rounds": 1,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "dispel",
+        "max_circle": 4,
+        "affects": [
+          "buff",
+          "summon",
+          "ward"
+        ]
+      }
+    ],
+    "fizzle": {
+      "base": 0.18,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "utility",
+      "debuff"
+    ]
+  },
+  {
+    "id": "inferno",
+    "name": "Inferno",
+    "school": "fire",
+    "circle": 5,
+    "cost": {
+      "mana": 14,
+      "reagents": {
+        "reagent_black_pearl": 2,
+        "reagent_sulfurous_ash": 2
+      }
+    },
+    "cast_rounds": 2,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "aoe_damage",
+        "element": "fire",
+        "shape": "circle",
+        "radius": 2,
+        "base": 18,
+        "variance_pct": 0.12,
+        "scaling": {
+          "INT": 0.15,
+          "magery": 0.04
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.22,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "aoe",
+      "nuke"
+    ]
+  },
+  {
+    "id": "blizzard",
+    "name": "Blizzard",
+    "school": "cold",
+    "circle": 5,
+    "cost": {
+      "mana": 14,
+      "reagents": {
+        "reagent_black_pearl": 2,
+        "reagent_spiders_silk": 2
+      }
+    },
+    "cast_rounds": 2,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "aoe_damage",
+        "element": "cold",
+        "shape": "circle",
+        "radius": 2,
+        "base": 15,
+        "variance_pct": 0.12,
+        "scaling": {
+          "INT": 0.1
+        }
+      },
+      {
+        "type": "slow",
+        "move_tiles_delta": -1,
+        "rounds": 2
+      }
+    ],
+    "fizzle": {
+      "base": 0.22,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "aoe",
+      "control"
+    ]
+  },
+  {
+    "id": "virulent_cloud",
+    "name": "Virulent Cloud",
+    "school": "toxic",
+    "circle": 5,
+    "cost": {
+      "mana": 13,
+      "reagents": {
+        "reagent_nightshade": 3,
+        "reagent_garlic": 1
+      }
+    },
+    "cast_rounds": 2,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "dot",
+        "element": "poison",
+        "base_per_round": 5,
+        "variance_pct": 0.1,
+        "rounds": 4,
+        "aoe": {
+          "shape": "cloud",
+          "radius": 3,
+          "persistence_rounds": 4
+        },
+        "scaling": {
+          "INT": 0.2
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.22,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "aoe",
+      "dot",
+      "debuff"
+    ]
+  },
+  {
+    "id": "mana_drain",
+    "name": "Mana Drain",
+    "school": "energy",
+    "circle": 5,
+    "cost": {
+      "mana": 12,
+      "reagents": {
+        "reagent_black_pearl": 2,
+        "reagent_mandrake_root": 2
+      }
+    },
+    "cast_rounds": 1,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "drain",
+        "resource": "mana",
+        "base": 12,
+        "variance_pct": 0.15,
+        "scaling": {
+          "INT": 0.1
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.22,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "debuff",
+      "utility"
+    ]
+  },
+  {
+    "id": "stone_ward_major",
+    "name": "Stone Ward (Major)",
+    "school": "earth",
+    "circle": 5,
+    "cost": {
+      "mana": 12,
+      "reagents": {
+        "reagent_bloodmoss": 2,
+        "reagent_ginseng": 2
+      }
+    },
+    "cast_rounds": 2,
+    "range_tiles": 0,
+    "effects": [
+      {
+        "type": "ward",
+        "resists": {
+          "slash": 8,
+          "pierce": 8,
+          "blunt": 8,
+          "fire": 5,
+          "cold": 5
+        },
+        "rounds": 3,
+        "scaling": {
+          "magery": 0.03
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.22,
+      "magery_factor": 0.002
+    },
+    "resist_check": null,
+    "ai_tags": [
+      "buff"
+    ]
+  },
+  {
+    "id": "silence_field",
+    "name": "Silence Field",
+    "school": "energy",
+    "circle": 5,
+    "cost": {
+      "mana": 12,
+      "reagents": {
+        "reagent_mandrake_root": 2,
+        "reagent_spiders_silk": 1
+      }
+    },
+    "cast_rounds": 1,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "debuff",
+        "stat": "cast_allowed",
+        "value": false,
+        "rounds": 1,
+        "aoe": {
+          "shape": "circle",
+          "radius": 2
+        }
+      },
+      {
+        "type": "silence",
+        "rounds": 1
+      }
+    ],
+    "fizzle": {
+      "base": 0.22,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "control",
+      "debuff"
+    ]
+  },
+  {
+    "id": "meteor",
+    "name": "Meteor",
+    "school": "fire",
+    "circle": 6,
+    "cost": {
+      "mana": 18,
+      "reagents": {
+        "reagent_black_pearl": 3,
+        "reagent_sulfurous_ash": 3
+      }
+    },
+    "cast_rounds": 2,
+    "range_tiles": 6,
+    "effects": [
+      {
+        "type": "aoe_damage",
+        "element": "fire",
+        "shape": "circle",
+        "radius": 1,
+        "base": 28,
+        "variance_pct": 0.12,
+        "scaling": {
+          "INT": 0.15,
+          "magery": 0.04
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.25,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "aoe",
+      "nuke"
+    ]
+  },
+  {
+    "id": "ice_coffin",
+    "name": "Ice Coffin",
+    "school": "cold",
+    "circle": 6,
+    "cost": {
+      "mana": 17,
+      "reagents": {
+        "reagent_black_pearl": 3,
+        "reagent_spiders_silk": 2
+      }
+    },
+    "cast_rounds": 2,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "root",
+        "rounds": 2
+      },
+      {
+        "type": "debuff",
+        "stat": "initiative",
+        "delta": -1,
+        "rounds": 2
+      }
+    ],
+    "fizzle": {
+      "base": 0.25,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "control"
+    ]
+  },
+  {
+    "id": "storm_pillar",
+    "name": "Storm Pillar",
+    "school": "energy",
+    "circle": 6,
+    "cost": {
+      "mana": 18,
+      "reagents": {
+        "reagent_black_pearl": 3,
+        "reagent_mandrake_root": 2
+      }
+    },
+    "cast_rounds": 2,
+    "range_tiles": 6,
+    "effects": [
+      {
+        "type": "aoe_damage",
+        "element": "energy",
+        "shape": "line",
+        "length_tiles": 5,
+        "base": 22,
+        "variance_pct": 0.1,
+        "scaling": {
+          "INT": 0.15,
+          "magery": 0.04
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.25,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "aoe",
+      "nuke"
+    ]
+  },
+  {
+    "id": "quicksand_maw",
+    "name": "Quicksand Maw",
+    "school": "earth",
+    "circle": 6,
+    "cost": {
+      "mana": 16,
+      "reagents": {
+        "reagent_bloodmoss": 3,
+        "reagent_ginseng": 2
+      }
+    },
+    "cast_rounds": 2,
+    "range_tiles": 5,
+    "effects": [
+      {
+        "type": "aoe_damage",
+        "element": "earth",
+        "shape": "circle",
+        "radius": 2,
+        "base": 14,
+        "variance_pct": 0.1,
+        "scaling": {
+          "INT": 0.1
+        }
+      },
+      {
+        "type": "slow",
+        "move_tiles_delta": -2,
+        "rounds": 2
+      }
+    ],
+    "fizzle": {
+      "base": 0.25,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "aoe",
+      "control"
+    ]
+  },
+  {
+    "id": "plague_wind",
+    "name": "Plague Wind",
+    "school": "toxic",
+    "circle": 6,
+    "cost": {
+      "mana": 17,
+      "reagents": {
+        "reagent_nightshade": 3,
+        "reagent_garlic": 2
+      }
+    },
+    "cast_rounds": 2,
+    "range_tiles": 6,
+    "effects": [
+      {
+        "type": "dot",
+        "element": "poison",
+        "base_per_round": 7,
+        "variance_pct": 0.1,
+        "rounds": 4,
+        "aoe": {
+          "shape": "cone",
+          "radius": 3
+        },
+        "scaling": {
+          "INT": 0.2
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.25,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "aoe",
+      "dot",
+      "debuff"
+    ]
+  },
+  {
+    "id": "arcane_cascade",
+    "name": "Arcane Cascade",
+    "school": "energy",
+    "circle": 6,
+    "cost": {
+      "mana": 18,
+      "reagents": {
+        "reagent_black_pearl": 3,
+        "reagent_mandrake_root": 2
+      }
+    },
+    "cast_rounds": 2,
+    "range_tiles": 6,
+    "effects": [
+      {
+        "type": "damage",
+        "element": "energy",
+        "base": 24,
+        "variance_pct": 0.12,
+        "scaling": {
+          "INT": 0.15,
+          "magery": 0.04
+        },
+        "chain": {
+          "jumps": 3,
+          "falloff": 0.2
+        }
+      }
+    ],
+    "fizzle": {
+      "base": 0.25,
+      "magery_factor": 0.002
+    },
+    "resist_check": {
+      "type": "resist_spells",
+      "scale": 200
+    },
+    "ai_tags": [
+      "aoe",
+      "nuke"
+    ]
+  }
+]
