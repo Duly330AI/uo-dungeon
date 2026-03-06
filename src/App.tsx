@@ -5,99 +5,115 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { loadData } from './services/dataService';
-import { DungeonGenerator } from './systems/dungeonGenerator';
+import { AssetManager } from './services/assetManager';
+import { AudioManager } from './services/audioManager';
 import { MapData, Vec2i } from './types';
 import { getVisibleTiles } from './util/fov';
+import { GameEngine, Intent } from './systems/engine';
+
+const TILE_SIZE = 32; // Scale up 16x16 sprites to 32x32 for better visibility
 
 export default function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const engineRef = useRef(new GameEngine());
   const [loading, setLoading] = useState(true);
-  const [map, setMap] = useState<MapData | null>(null);
-  const [playerPos, setPlayerPos] = useState<Vec2i>({ x: 0, y: 0 });
+  const [gameState, setGameState] = useState(engineRef.current.getState());
 
   const render = useCallback((ctx: CanvasRenderingContext2D, map: MapData, playerPos: Vec2i) => {
     const canvas = ctx.canvas;
     const visible = getVisibleTiles(map, playerPos, 8);
     
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    const tileSize = 16;
+    const dungeonSheet = AssetManager.getImage('dungeon');
+    const charSheet = AssetManager.getImage('chars');
+
+    if (!dungeonSheet || !charSheet) return;
+
+    // Camera centers on player
+    const cameraX = playerPos.x * TILE_SIZE - canvas.width / 2 + TILE_SIZE / 2;
+    const cameraY = playerPos.y * TILE_SIZE - canvas.height / 2 + TILE_SIZE / 2;
+
+    const drawSprite = (img: HTMLImageElement, sx: number, sy: number, x: number, y: number) => {
+      ctx.drawImage(img, sx * 16, sy * 16, 16, 16, x * TILE_SIZE - cameraX, y * TILE_SIZE - cameraY, TILE_SIZE, TILE_SIZE);
+    };
+
     for (let y = 0; y < map.height; y++) {
       for (let x = 0; x < map.width; x++) {
         if (!visible[y][x]) continue;
 
         const tile = map.tiles[y][x];
-        ctx.fillStyle = tile === 'WALL' ? '#333' : '#eee';
-        ctx.fillRect(x * tileSize, y * tileSize, tileSize - 1, tileSize - 1);
+        if (tile === 'WALL') {
+          drawSprite(dungeonSheet, 1, 0, x, y); // Wall sprite
+        } else {
+          drawSprite(dungeonSheet, 0, 0, x, y); // Floor sprite
+        }
       }
     }
 
     // Render player
-    ctx.fillStyle = 'blue';
-    ctx.fillRect(playerPos.x * tileSize, playerPos.y * tileSize, tileSize - 1, tileSize - 1);
+    drawSprite(charSheet, 0, 4, playerPos.x, playerPos.y); // Player sprite
   }, []);
 
   useEffect(() => {
     async function init() {
       try {
-        await loadData('/data/combat_rules.json');
-        await loadData('/data/skills.json');
-        await loadData('/data/spells.json');
-        await loadData('/data/monsters.json');
-        
-        const generator = new DungeonGenerator(80, 60);
-        const mapData = generator.generate();
-        setMap(mapData);
+        AudioManager.init();
 
-        // Find valid start position
-        let startPos = { x: 1, y: 1 };
-        for (let y = 0; y < mapData.height; y++) {
-          for (let x = 0; x < mapData.width; x++) {
-            if (mapData.tiles[y][x] === 'FLOOR') {
-              startPos = { x, y };
-              break;
-            }
-          }
-          if (startPos.x !== 1) break;
-        }
-        setPlayerPos(startPos);
+        await Promise.all([
+          loadData('/data/combat_rules.json'),
+          loadData('/data/skills.json'),
+          loadData('/data/spells.json'),
+          loadData('/data/monsters.json'),
+          AssetManager.loadImage('dungeon', '/assets/roguelikeDungeon_transparent.png'),
+          AssetManager.loadImage('chars', '/assets/roguelikeSheet_transparent.png')
+        ]);
+        
+        engineRef.current.init();
+        setGameState({ ...engineRef.current.getState() });
         setLoading(false);
       } catch (error) {
-        console.error('Failed to load game data:', error);
+        console.error('Failed to load game data or assets:', error);
       }
     }
     init();
   }, []);
 
   useEffect(() => {
-    if (loading || !canvasRef.current || !map) return;
-
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    render(ctx, map, playerPos);
+    if (loading) return;
 
     const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      render(ctx, map, playerPos);
+      if (canvasRef.current) {
+        canvasRef.current.width = window.innerWidth;
+        canvasRef.current.height = window.innerHeight;
+        setGameState({ ...engineRef.current.getState() });
+      }
     };
     window.addEventListener('resize', handleResize);
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      let newPos = { ...playerPos };
-      if (e.key === 'w') newPos.y -= 1;
-      if (e.key === 's') newPos.y += 1;
-      if (e.key === 'a') newPos.x -= 1;
-      if (e.key === 'd') newPos.x += 1;
+      let intent: Intent | null = null;
+      switch (e.key) {
+        case '1': case 'z': intent = { type: 'MOVE', dx: -1, dy: 1 }; break;
+        case '2': case 'x': case 'ArrowDown': intent = { type: 'MOVE', dx: 0, dy: 1 }; break;
+        case '3': case 'c': intent = { type: 'MOVE', dx: 1, dy: 1 }; break;
+        case '4': case 'a': case 'ArrowLeft': intent = { type: 'MOVE', dx: -1, dy: 0 }; break;
+        case '5': case 's': intent = { type: 'WAIT' }; break;
+        case '6': case 'd': case 'ArrowRight': intent = { type: 'MOVE', dx: 1, dy: 0 }; break;
+        case '7': case 'q': intent = { type: 'MOVE', dx: -1, dy: -1 }; break;
+        case '8': case 'w': case 'ArrowUp': intent = { type: 'MOVE', dx: 0, dy: -1 }; break;
+        case '9': case 'e': intent = { type: 'MOVE', dx: 1, dy: -1 }; break;
+      }
 
-      if (map.tiles[newPos.y] && map.tiles[newPos.y][newPos.x] !== 'WALL') {
-        setPlayerPos(newPos);
+      if (intent) {
+        const acted = engineRef.current.processInput(intent);
+        if (acted) {
+          if (intent.type === 'MOVE') {
+            AudioManager.playFootstep();
+          }
+          setGameState({ ...engineRef.current.getState() });
+        }
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -106,14 +122,32 @@ export default function App() {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [loading, map, playerPos, render]);
+  }, [loading]);
 
-  if (loading) return <div>Loading game data...</div>;
+  useEffect(() => {
+    if (loading || !canvasRef.current || !gameState.map) return;
+    
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    if (canvas.width !== window.innerWidth || canvas.height !== window.innerHeight) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    // Disable image smoothing for crisp pixel art
+    ctx.imageSmoothingEnabled = false;
+
+    render(ctx, gameState.map, gameState.playerPos);
+  }, [loading, gameState, render]);
+
+  if (loading) return <div className="p-4 text-white">Loading game data and assets...</div>;
 
   return (
     <canvas 
       ref={canvasRef} 
-      className="block w-full h-full"
+      className="block w-full h-full bg-black"
     />
   );
 }
