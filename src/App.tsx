@@ -21,7 +21,7 @@ export default function App() {
   const [logs, setLogs] = useState<string[]>([]);
   const [isInteracting, setIsInteracting] = useState(false);
 
-  const render = useCallback((ctx: CanvasRenderingContext2D, map: MapData, playerPos: Vec2i, entities: Entity[]) => {
+  const render = useCallback((ctx: CanvasRenderingContext2D, map: MapData, playerPos: Vec2i, entities: Entity[], playerStats: { hp: number, maxHp: number }) => {
     const canvas = ctx.canvas;
     const visible = getVisibleTiles(map, playerPos, 8);
     
@@ -75,11 +75,30 @@ export default function App() {
         drawSprite(dungeonSheet, entity.state === 'closed' ? 3 : 4, 0, entity.pos.x, entity.pos.y);
       } else if (entity.kind === 'chest') {
         drawSprite(dungeonSheet, entity.state === 'closed' ? 5 : 6, 0, entity.pos.x, entity.pos.y);
+      } else if (entity.kind === 'enemy') {
+        drawSprite(charSheet, 0, 5, entity.pos.x, entity.pos.y); // Enemy sprite (row 5)
+        // Health bar for enemy
+        if (entity.hp !== undefined && entity.maxHp !== undefined) {
+          const hpPct = entity.hp / entity.maxHp;
+          const sx = Math.floor(entity.pos.x * TILE_SIZE - cameraX);
+          const sy = Math.floor(entity.pos.y * TILE_SIZE - cameraY);
+          ctx.fillStyle = 'red';
+          ctx.fillRect(sx, sy - 4, TILE_SIZE, 3);
+          ctx.fillStyle = 'green';
+          ctx.fillRect(sx, sy - 4, TILE_SIZE * hpPct, 3);
+        }
       }
     }
 
     // Render player
     drawSprite(charSheet, 0, 4, playerPos.x, playerPos.y); // Player sprite
+
+    // UI Overlay (HP)
+    ctx.fillStyle = 'white';
+    ctx.font = '16px monospace';
+    ctx.fillText(`HP: ${playerStats.hp}/${playerStats.maxHp}`, 10, 20);
+    ctx.fillText(`Turn: ${engineRef.current.getState().turn}`, 10, 40);
+
   }, []);
 
   useEffect(() => {
@@ -87,7 +106,7 @@ export default function App() {
       try {
         AudioManager.init();
 
-        await Promise.all([
+        const [combatRules, skills, spells, monsters] = await Promise.all([
           loadData('/data/combat_rules.json'),
           loadData('/data/skills.json'),
           loadData('/data/spells.json'),
@@ -96,7 +115,7 @@ export default function App() {
           AssetManager.loadImage('chars', '/assets/roguelikeSheet_transparent.png')
         ]);
         
-        engineRef.current.init();
+        engineRef.current.init(combatRules, monsters);
         setLoading(false);
       } catch (err: any) {
         console.error('Failed to load game data or assets:', err);
@@ -154,7 +173,7 @@ export default function App() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [loading, error]);
+  }, [loading, error, isInteracting]);
 
   useEffect(() => {
     if (loading || error || !canvasRef.current) return;
@@ -174,7 +193,7 @@ export default function App() {
 
       const state = engineRef.current.getState();
       if (state.map) {
-        render(ctx, state.map, state.playerPos, state.entities);
+        render(ctx, state.map, state.playerPos, state.entities, state.playerStats);
       }
 
       animationFrameId = requestAnimationFrame(renderLoop);

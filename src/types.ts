@@ -18,7 +18,14 @@ export interface Entity {
   pos: Vec2i;
   blocksMovement: boolean;
   interactable: boolean;
-  state: "closed" | "open" | "locked";
+  state: "closed" | "open" | "locked" | "idle" | "combat" | "dead";
+  hp?: number;
+  maxHp?: number;
+  name?: string;
+  stats?: {
+    attack: number;
+    defense: number;
+  };
 }
 
 export type TileType = "WALL" | "FLOOR" | "DOOR";
