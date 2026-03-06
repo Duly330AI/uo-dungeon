@@ -17,6 +17,7 @@ export default function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const engineRef = useRef(new GameEngine());
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [gameState, setGameState] = useState(engineRef.current.getState());
 
   const render = useCallback((ctx: CanvasRenderingContext2D, map: MapData, playerPos: Vec2i) => {
@@ -73,15 +74,16 @@ export default function App() {
         engineRef.current.init();
         setGameState({ ...engineRef.current.getState() });
         setLoading(false);
-      } catch (error) {
-        console.error('Failed to load game data or assets:', error);
+      } catch (err: any) {
+        console.error('Failed to load game data or assets:', err);
+        setError(err.message || 'Unknown error occurred while loading assets.');
       }
     }
     init();
   }, []);
 
   useEffect(() => {
-    if (loading) return;
+    if (loading || error) return;
 
     const handleResize = () => {
       if (canvasRef.current) {
@@ -122,10 +124,10 @@ export default function App() {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [loading]);
+  }, [loading, error]);
 
   useEffect(() => {
-    if (loading || !canvasRef.current || !gameState.map) return;
+    if (loading || error || !canvasRef.current || !gameState.map) return;
     
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -140,9 +142,24 @@ export default function App() {
     ctx.imageSmoothingEnabled = false;
 
     render(ctx, gameState.map, gameState.playerPos);
-  }, [loading, gameState, render]);
+  }, [loading, error, gameState, render]);
 
-  if (loading) return <div className="p-4 text-white">Loading game data and assets...</div>;
+  if (error) {
+    return (
+      <div className="p-4 text-red-500 bg-black h-full w-full flex items-center justify-center flex-col">
+        <h1 className="text-2xl font-bold mb-4">Error Loading Game</h1>
+        <p>{error}</p>
+        <button 
+          className="mt-4 px-4 py-2 bg-white text-black rounded"
+          onClick={() => window.location.reload()}
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
+
+  if (loading) return <div className="p-4 text-white bg-black h-full w-full flex items-center justify-center">Loading game data and assets...</div>;
 
   return (
     <canvas 

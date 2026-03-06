@@ -11,7 +11,10 @@ export class AssetManager {
         this.images[key] = img;
         resolve(img);
       };
-      img.onerror = reject;
+      img.onerror = (e) => {
+        console.error(`Failed to load image: ${src}`, e);
+        reject(new Error(`Failed to load image: ${src}`));
+      };
       img.src = src;
     });
   }

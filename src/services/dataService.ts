@@ -1,7 +1,12 @@
 export async function loadData<T>(path: string): Promise<T> {
-  const response = await fetch(path);
-  if (!response.ok) {
-    throw new Error(`Failed to load data from ${path}: ${response.statusText}`);
+  try {
+    const response = await fetch(path);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error(`Failed to load data from ${path}:`, error);
+    throw error;
   }
-  return response.json();
 }
