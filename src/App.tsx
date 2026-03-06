@@ -7,7 +7,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { loadData } from './services/dataService';
 import { AssetManager } from './services/assetManager';
 import { AudioManager } from './services/audioManager';
-import { MapData, Vec2i } from './types';
+import { MapData, Vec2i, Entity } from './types';
 import { getVisibleTiles } from './util/fov';
 import { GameEngine, Intent } from './systems/engine';
 
@@ -18,8 +18,9 @@ export default function App() {
   const engineRef = useRef(new GameEngine());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [logs, setLogs] = useState<string[]>([]);
 
-  const render = useCallback((ctx: CanvasRenderingContext2D, map: MapData, playerPos: Vec2i) => {
+  const render = useCallback((ctx: CanvasRenderingContext2D, map: MapData, playerPos: Vec2i, entities: Entity[]) => {
     const canvas = ctx.canvas;
     const visible = getVisibleTiles(map, playerPos, 8);
     
@@ -66,6 +67,16 @@ export default function App() {
       }
     }
 
+    // Render entities
+    for (const entity of entities) {
+      if (!visible[entity.pos.y][entity.pos.x]) continue;
+      if (entity.kind === 'door') {
+        drawSprite(dungeonSheet, entity.state === 'closed' ? 3 : 4, 0, entity.pos.x, entity.pos.y);
+      } else if (entity.kind === 'chest') {
+        drawSprite(dungeonSheet, entity.state === 'closed' ? 5 : 6, 0, entity.pos.x, entity.pos.y);
+      }
+    }
+
     // Render player
     drawSprite(charSheet, 0, 4, playerPos.x, playerPos.y); // Player sprite
   }, []);
@@ -109,13 +120,17 @@ export default function App() {
         case '7': case 'q': intent = { type: 'MOVE', dx: -1, dy: -1 }; break;
         case '8': case 'w': case 'ArrowUp': intent = { type: 'MOVE', dx: 0, dy: -1 }; break;
         case '9': case 'e': intent = { type: 'MOVE', dx: 1, dy: -1 }; break;
+        case 'f': intent = { type: 'INTERACT', dx: 0, dy: 0 }; break; // Simplified interaction
       }
 
       if (intent) {
-        const acted = engineRef.current.processInput(intent);
-        if (acted) {
+        const result = engineRef.current.processInput(intent);
+        if (result.acted) {
           if (intent.type === 'MOVE') {
             AudioManager.playFootstep();
+          }
+          if (result.message) {
+            setLogs(prev => [...prev.slice(-4), result.message!]);
           }
         }
       }
@@ -145,7 +160,7 @@ export default function App() {
 
       const state = engineRef.current.getState();
       if (state.map) {
-        render(ctx, state.map, state.playerPos);
+        render(ctx, state.map, state.playerPos, state.entities);
       }
 
       animationFrameId = requestAnimationFrame(renderLoop);
@@ -176,10 +191,15 @@ export default function App() {
   if (loading) return <div className="p-4 text-white bg-black h-full w-full flex items-center justify-center">Loading game data and assets...</div>;
 
   return (
-    <canvas 
-      ref={canvasRef} 
-      className="block w-full h-full bg-black"
-    />
+    <>
+      <canvas 
+        ref={canvasRef} 
+        className="block w-full h-full bg-black"
+      />
+      <div className="absolute bottom-4 left-4 text-white bg-black/50 p-2 rounded">
+        {logs.map((log, i) => <div key={i}>{log}</div>)}
+      </div>
+    </>
   );
 }
 

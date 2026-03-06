@@ -1,5 +1,5 @@
-export type EntityKind = "player" | "enemy" | "projectile";
-export type IntentType = "move" | "attack" | "shoot" | "cast" | "useItem" | "wait";
+export type EntityKind = "player" | "enemy" | "projectile" | "door" | "chest";
+export type IntentType = "move" | "attack" | "shoot" | "cast" | "useItem" | "wait" | "interact";
 export type OutcomeType =
   | "moved"
   | "hit"
@@ -9,7 +9,17 @@ export type OutcomeType =
   | "death"
   | "drop"
   | "message"
-  | "wait";
+  | "wait"
+  | "interacted";
+
+export interface Entity {
+  id: string;
+  kind: EntityKind;
+  pos: Vec2i;
+  blocksMovement: boolean;
+  interactable: boolean;
+  state: "closed" | "open" | "locked";
+}
 
 export type TileType = "WALL" | "FLOOR" | "DOOR";
 
