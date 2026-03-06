@@ -11,6 +11,14 @@ export type OutcomeType =
   | "message"
   | "wait";
 
+export type TileType = "WALL" | "FLOOR" | "DOOR";
+
+export interface MapData {
+  width: number;
+  height: number;
+  tiles: TileType[][];
+}
+
 export interface Vec2i {
   x: number;
   y: number;
