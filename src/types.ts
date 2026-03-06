@@ -12,6 +12,11 @@ export type OutcomeType =
   | "wait"
   | "interacted";
 
+export interface InventoryItem {
+  itemId: string;
+  qty: number;
+}
+
 export interface Entity {
   id: string;
   kind: EntityKind;

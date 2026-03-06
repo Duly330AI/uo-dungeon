@@ -7,7 +7,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { loadData } from './services/dataService';
 import { AssetManager } from './services/assetManager';
 import { AudioManager } from './services/audioManager';
-import { MapData, Vec2i, Entity } from './types';
+import { MapData, Vec2i, Entity, InventoryItem } from './types';
 import { getVisibleTiles } from './util/fov';
 import { GameEngine, Intent } from './systems/engine';
 
@@ -21,7 +21,7 @@ export default function App() {
   const [logs, setLogs] = useState<string[]>([]);
   const [isInteracting, setIsInteracting] = useState(false);
 
-  const render = useCallback((ctx: CanvasRenderingContext2D, map: MapData, playerPos: Vec2i, entities: Entity[], playerStats: { hp: number, maxHp: number }) => {
+  const render = useCallback((ctx: CanvasRenderingContext2D, map: MapData, playerPos: Vec2i, entities: Entity[], playerStats: { hp: number, maxHp: number }, inventory: InventoryItem[]) => {
     const canvas = ctx.canvas;
     const visible = getVisibleTiles(map, playerPos, 8);
     
@@ -99,6 +99,12 @@ export default function App() {
     ctx.fillText(`HP: ${playerStats.hp}/${playerStats.maxHp}`, 10, 20);
     ctx.fillText(`Turn: ${engineRef.current.getState().turn}`, 10, 40);
 
+    // Inventory Overlay
+    ctx.fillText('Inventory:', 10, 70);
+    inventory.forEach((item, index) => {
+      ctx.fillText(`- ${item.itemId}: ${item.qty}`, 20, 90 + index * 20);
+    });
+
   }, []);
 
   useEffect(() => {
@@ -106,16 +112,17 @@ export default function App() {
       try {
         AudioManager.init();
 
-        const [combatRules, skills, spells, monsters] = await Promise.all([
+        const [combatRules, skills, spells, monsters, items] = await Promise.all([
           loadData('/data/combat_rules.json'),
           loadData('/data/skills.json'),
           loadData('/data/spells.json'),
           loadData('/data/monsters.json'),
+          loadData('/data/items.json'),
           AssetManager.loadImage('dungeon', '/assets/roguelikeDungeon_transparent.png'),
           AssetManager.loadImage('chars', '/assets/roguelikeSheet_transparent.png')
         ]);
         
-        engineRef.current.init(combatRules, monsters);
+        engineRef.current.init(combatRules, monsters, items);
         setLoading(false);
       } catch (err: any) {
         console.error('Failed to load game data or assets:', err);
@@ -193,7 +200,7 @@ export default function App() {
 
       const state = engineRef.current.getState();
       if (state.map) {
-        render(ctx, state.map, state.playerPos, state.entities, state.playerStats);
+        render(ctx, state.map, state.playerPos, state.entities, state.playerStats, state.inventory);
       }
 
       animationFrameId = requestAnimationFrame(renderLoop);

@@ -1,4 +1,4 @@
-import { MapData, Vec2i, Entity } from '../types';
+import { MapData, Vec2i, Entity, InventoryItem } from '../types';
 import { DungeonGenerator } from './dungeonGenerator';
 
 export type Intent = 
@@ -11,6 +11,7 @@ export interface GameState {
   playerPos: Vec2i;
   playerStats: { hp: number; maxHp: number; attack: number; defense: number };
   entities: Entity[];
+  inventory: InventoryItem[];
   turn: number;
 }
 
@@ -20,6 +21,7 @@ export class GameEngine {
   private state: GameState;
   private combatRules: any;
   private monsterTemplates: any[] = [];
+  private itemTemplates: any[] = [];
 
   constructor() {
     this.state = {
@@ -27,6 +29,7 @@ export class GameEngine {
       playerPos: { x: 0, y: 0 },
       playerStats: { hp: 100, maxHp: 100, attack: 10, defense: 5 },
       entities: [],
+      inventory: [],
       turn: 0,
     };
   }
@@ -35,9 +38,10 @@ export class GameEngine {
     return this.state;
   }
 
-  public init(combatRules: any, monsterData: any[]) {
+  public init(combatRules: any, monsterData: any[], itemData: any[]) {
     this.combatRules = combatRules;
     this.monsterTemplates = monsterData;
+    this.itemTemplates = itemData;
 
     const generator = new DungeonGenerator(80, 60);
     const mapData = generator.generate();
@@ -57,6 +61,7 @@ export class GameEngine {
     this.state.map = mapData;
     this.state.playerPos = startPos;
     this.state.playerStats = { hp: 100, maxHp: 100, attack: 10, defense: 5 };
+    this.state.inventory = [];
     this.state.entities = [
       { id: 'door1', kind: 'door', pos: { x: startPos.x + 1, y: startPos.y }, blocksMovement: true, interactable: true, state: 'closed' },
       { id: 'chest1', kind: 'chest', pos: { x: startPos.x + 2, y: startPos.y }, blocksMovement: false, interactable: true, state: 'closed' }
@@ -187,8 +192,26 @@ export class GameEngine {
       return { acted: true, message: `Door ${entity.state}.` };
     } else if (entity.kind === 'chest') {
       if (entity.state === 'open') return { acted: false, message: 'Chest is empty.' };
+      
+      // Generate loot
+      const lootCount = Math.floor(Math.random() * 2) + 1; // 1-2 items
+      const lootedItems: string[] = [];
+      
+      for (let i = 0; i < lootCount; i++) {
+          if (this.itemTemplates.length > 0) {
+              const randomItem = this.itemTemplates[Math.floor(Math.random() * this.itemTemplates.length)];
+              const existingItem = this.state.inventory.find(item => item.itemId === randomItem.id);
+              if (existingItem) {
+                  existingItem.qty += 1;
+              } else {
+                  this.state.inventory.push({ itemId: randomItem.id, qty: 1 });
+              }
+              lootedItems.push(randomItem.name);
+          }
+      }
+
       entity.state = 'open';
-      return { acted: true, message: 'Chest opened and looted.' };
+      return { acted: true, message: lootedItems.length > 0 ? `Looted: ${lootedItems.join(', ')}` : 'Chest was empty.' };
     }
 
     return { acted: false };
